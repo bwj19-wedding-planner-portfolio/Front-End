@@ -1,8 +1,8 @@
 import React from "react";
 
-function WeddingCard(props) {
+function SingleWedding(props) {
 
-    const {title, planner, location, theme} = props
+    const {title, planner, location, theme, vendors} = props
 
     return (
         <div>
@@ -11,10 +11,9 @@ function WeddingCard(props) {
             <p>Planner: {planner}</p>
             <p>Location: {location}</p>
             <p>Theme: {theme}</p>
-            <button className="hidden">Edit</button>
-            <button className="hidden">Delete</button>
+            <p>Vendors: {vendors}</p>
         </div>
     )
 };
 
-export default WeddingCard;
+export default SingleWedding;
