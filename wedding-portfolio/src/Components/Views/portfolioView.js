@@ -1,16 +1,17 @@
 import React from "react"; 
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
+import guestView from "../Views/guestView.js"
 
 function PortfolioView() {
 
     return(
 <section> 
-        {/*  Top section of the page  */}
+        {/*  Top section of the page content  */}
       <div> 
           <h1> Wedding Planner Portfolio </h1>
       </div>
       <div>
-          <button> Couples </button>
+          <button onClick="guestView"> Couples </button>
       </div>
       <div>
           <button> Wedding Planners </button> 
@@ -24,7 +25,7 @@ function PortfolioView() {
           </div>
       </div>
 
-       {/* Middle section of the webstie  */}
+       {/* Webstie main content */}
     <article> 
          <div> 
             <WeddingCard /> 
