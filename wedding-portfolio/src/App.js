@@ -16,8 +16,6 @@ import { Header } from "./Components/Global/Header";
 import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
 
-//Utilities//
-
 function App() {
   return (
     <div className="App">  
