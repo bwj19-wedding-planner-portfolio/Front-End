@@ -1,9 +1,14 @@
 import React from "react";
 import "./App.css";
 import { longStackSupport } from "q";
+import { Login } from "./Components/LoginForms/login";
 
 function App() {
-  return <div className="App" />;
+  return (
+    <div className="App">
+      <Login />
+    </div>
+  );
 }
 
 export default App;
