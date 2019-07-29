@@ -1,12 +1,9 @@
 import React from 'react';
 import './App.css';
-import { longStackSupport } from 'q';
 
 function App() {
   return (
-    <div className="App">
 
-    </div>
   );
 }
 
@@ -16,6 +13,7 @@ export default App;
 // STATE (contexts to pass?):
 // 		weddings
 // 		user
+//    loggedIn
 
 // NAVBAR
     // simple log in or Log out
@@ -27,7 +25,7 @@ export default App;
     // IF Logged OUT
           //logIn button
 
-          
+
 // 	No Auth Routes:
 // 		“/Login” {Login}
 // 		“/Register” {Register}
