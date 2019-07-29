@@ -10,6 +10,7 @@ function App() {
   < PortfolioView />  
    </div> 
   </div>
+
 }
 
 export default App;
@@ -17,6 +18,7 @@ export default App;
 // STATE (contexts to pass?):
 // 		weddings
 // 		user
+//    loggedIn
 
 // NAVBAR
 // simple log in or Log out
