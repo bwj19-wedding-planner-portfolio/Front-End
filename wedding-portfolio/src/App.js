@@ -2,11 +2,16 @@ import React from "react";
 import "./App.css";
 import { longStackSupport } from "q";
 import { Login } from "./Components/LoginForms/login";
+import { Register } from "./Components/LoginForms/register";
 
 function App() {
   return (
     <div className="App">
+      <h1> LOGIN </h1>
       <Login />
+      <br />
+      <h1> REGISTRATION </h1>
+      <Register />
     </div>
   );
 }
