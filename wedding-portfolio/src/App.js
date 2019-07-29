@@ -1,14 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { longStackSupport } from "q";
+import PortfolioView from "./Components/Views/portfolioView.js";
+
 
 function App() {
-  return (
+  return <div className="App">  
+  <div> 
+  < PortfolioView />  
+   </div> 
+  </div>
 
-  );
 }
 
 export default App;
-
 
 // STATE (contexts to pass?):
 // 		weddings
@@ -16,15 +21,14 @@ export default App;
 //    loggedIn
 
 // NAVBAR
-    // simple log in or Log out
-    // if Logged in has links to 
-    //   add
-    //   log out 
-    //   guest view
-    //   portfolio view
-    // IF Logged OUT
-          //logIn button
-
+// simple log in or Log out
+// if Logged in has links to
+//   add
+//   log out
+//   guest view
+//   portfolio view
+// IF Logged OUT
+//logIn button
 
 // 	No Auth Routes:
 // 		“/Login” {Login}
@@ -33,7 +37,7 @@ export default App;
 // 	With Auth Private Routes:
 // 		“/Portfolio”{Portfolio}
 // 		“/weddingForm”{weddingForm}
-		
+
 // 	Logout:
 // 		logout=(event) => {
 // 		this.props.history.push(‘/guest’)
