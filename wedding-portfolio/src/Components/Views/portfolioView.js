@@ -1,10 +1,11 @@
 import React from "react"; 
+// import WeddingCard from "./components/WeddingCard/weddingCard.js"
 
 function PortfolioView() {
 
     return(
-        // Top section of the page 
-    <section> 
+<section> 
+        {/*  Top section of the page  */}
       <div> 
           <h1> Wedding Planner Portfolio </h1>
       </div>
@@ -22,7 +23,14 @@ function PortfolioView() {
               <button> Log Out </button>
           </div>
       </div>
-    </section>
+
+       {/* Middle section of the webstie  */}
+    <article> 
+         <div> 
+            {/* <WeddingCard />  */}
+         </div>
+    </article>
+</section>
     ); 
 }
 
