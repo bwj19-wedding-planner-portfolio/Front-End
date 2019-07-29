@@ -1,10 +1,15 @@
 import React from "react";
 import "./App.css";
 import { longStackSupport } from "q";
+import PortfolioView from "./Components/Views/portfolioView.js";
+
 
 function App() {
-  return <div className="App" />;
-   
+  return <div className="App">  
+  <div> 
+  < PortfolioView />  
+   </div> 
+  </div>
 }
 
 export default App;
