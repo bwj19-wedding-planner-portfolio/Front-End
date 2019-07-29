@@ -1,5 +1,5 @@
 import React from "react"; 
-// import WeddingCard from "./components/WeddingCard/weddingCard.js"
+import WeddingCard from "../WeddingCard/weddingCard.js"; 
 
 function PortfolioView() {
 
@@ -27,7 +27,7 @@ function PortfolioView() {
        {/* Middle section of the webstie  */}
     <article> 
          <div> 
-            {/* <WeddingCard />  */}
+            <WeddingCard /> 
          </div>
     </article>
 </section>
