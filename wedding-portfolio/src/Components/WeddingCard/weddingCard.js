@@ -9,7 +9,7 @@ function WeddingCard(props) {
 
     const [weddingToEdit, setWeddingToEdit] = useState(null)
 
-    const {photo, couple_name, firstName, user_location, wedding_theme} = props
+    const {photo, couple_name, firstName, user_location, wedding_theme} = props.view
 
     function isLoggedIn() {
         if (localStorage.getItem('token')) {
@@ -40,7 +40,7 @@ function WeddingCard(props) {
         setWeddingToEdit(wedding);
         console.log(wedding);
         // history.push("/weddingForm")
-        
+
     }
 
     // add function to the delete button to add an onClick alert that asks if they wanted to delete the wedding, if yes, then remove the wedding from database
