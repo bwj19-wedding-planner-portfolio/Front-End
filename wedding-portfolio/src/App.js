@@ -1,3 +1,10 @@
+//Dependancies//
+import React, { useState } from "react";
+import { Route } from "react-router-dom";
+
+//Styling//
+import "./App.css";
+
 //Components//
 import GuestView from "./Components/Views/guestView";
 import PortfolioView from "./Components/Views/portfolioView.js";
@@ -8,23 +15,42 @@ import { Header } from "./Components/Global/Header";
 // import WeddingForm from "./Components/WeddingCard/weddingForm";
 import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
+//Utilities//
+import { UserContext } from "./Contexts/userContext";
+import { WeddingsArrayContext } from "./Contexts/weddingContext";
+import { PrivateRoute } from "./Utilities/PrivateRoute";
 
-function App() {
+function App(props) {
+  console.log("app props", props)
+
+  const [user, setUser] = useState(null)
+  const [weddingsArray, setWeddingsArray] = useState("Sneaky Wedding Array")
+
   return (
-    <div className="App">  
-      <div> 
-        <Header />
-        <NavBar />
-      </div> 
-      <Route exact path="/" component={GuestView} />
-      <Route exact path="/login" component={Login}/>
-      <Route exact path="/register" component={Register}/>
+    <UserContext.Provider value={{user, setUser}}>
+      <WeddingsArrayContext.Provider value={{weddingsArray, setWeddingsArray}}>
+      <div className="App">  
 
-      <Route exact path="/portfolioView" component={PortfolioView}/>
-      {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}
-      <Route exact path="/singleWedding" component={SingleWedding} />
+        <div> 
+          <Header />
+          <NavBar routeProps={props}/>
+        </div> 
 
-    </div>
+        <Route exact path="/" component={GuestView} />
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/register" component={Register}/>
+
+
+        {/* Private Routes */}
+        <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
+        {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}
+        <PrivateRoute exact path="/singleWedding" component={SingleWedding} />
+
+      </div>
+      </WeddingsArrayContext.Provider>
+    </UserContext.Provider>
+
+
   )
 }
 
