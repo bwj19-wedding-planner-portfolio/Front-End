@@ -1,19 +1,31 @@
-import React from "react";
-import "./App.css";
-import { longStackSupport } from "q";
-import { Login } from "./Components/LoginForms/login";
+//Components//
+import GuestView from "./Components/Views/guestView";
+import PortfolioView from "./Components/Views/portfolioView.js";
 import { Register } from "./Components/LoginForms/register";
+import { Login } from "./Components/LoginForms/login";
+import { NavBar } from "./Components/Global/NavBar";
+import { Header } from "./Components/Global/Header";
+// import WeddingForm from "./Components/WeddingCard/weddingForm";
+import SingleWedding from "./Components/WeddingCard/SingleWedding";
+
 
 function App() {
   return (
-    <div className="App">
-      <h1> LOGIN </h1>
-      <Login />
-      <br />
-      <h1> REGISTRATION </h1>
-      <Register />
+    <div className="App">  
+      <div> 
+        <Header />
+        <NavBar />
+      </div> 
+      <Route exact path="/" component={GuestView} />
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/register" component={Register}/>
+
+      <Route exact path="/portfolioView" component={PortfolioView}/>
+      {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}
+      <Route exact path="/singleWedding" component={SingleWedding} />
+
     </div>
-  );
+  )
 }
 
 export default App;
@@ -21,6 +33,7 @@ export default App;
 // STATE (contexts to pass?):
 // 		weddings
 // 		user
+//    loggedIn
 
 // NAVBAR
 // simple log in or Log out
