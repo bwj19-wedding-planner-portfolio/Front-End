@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Button } from 'semantic-ui-react'
 
 function WeddingCard(props) {
 
@@ -16,6 +16,9 @@ function WeddingCard(props) {
     }
 
     // add function to the delete button to add an onClick alert that asks if they wanted to delete the wedding, if yes, then remove the wedding from database
+    function deleteWedding(wedding) {
+        console.log(wedding)
+    }
 
     return (
              <Card>
@@ -26,6 +29,9 @@ function WeddingCard(props) {
                         <span className='date'>Planner: {planner}</span>
                     </Card.Meta>
                     <Card.Meta>
+                        <span className='date'>Location: {user_location}</span>
+                    </Card.Meta>
+                    <Card.Meta>
                         <span className='date'>Theme: {wedding_theme}</span>
                     </Card.Meta>
                     {/* <Card.Description>
@@ -34,13 +40,18 @@ function WeddingCard(props) {
                 </Card.Content>
                 <Card.Content extra>
                     {/*condition ? true : false. or condition && element*/}
+
                     {isLoggedIn 
-                        ? <button onClick={() => grabWedding(props)}>
+                        ? <Button onClick={() => grabWedding(props)}>
                             Edit
-                        </button> 
-                        : <button>More Info</button>
+                        </Button> 
+                        : <Link>More Info</Link>
                     }
-                    {isLoggedIn && <button>Delete</button>}
+
+                    {isLoggedIn && <Button onClick={() => deleteWedding(props)}>
+                        Delete
+                    </Button>
+                    }
                 </Card.Content>
             </Card>            
     )
