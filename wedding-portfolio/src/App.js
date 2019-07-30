@@ -1,10 +1,3 @@
-//Dependancies//
-import React from "react";
-import { Route } from "react-router-dom";
-
-//Styling//
-import "./App.css";
-
 //Components//
 import GuestView from "./Components/Views/guestView";
 import PortfolioView from "./Components/Views/portfolioView.js";
