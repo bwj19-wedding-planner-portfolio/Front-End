@@ -18,20 +18,21 @@ useEffect(() => {
         })
 }, [])
 
-
-function GuestView() {
     return (
         <section>
             {/* drop down elements */}
-               <div>
-                    <button> Wedding Planner </button>   
-                </div>
-                <div> 
-                    <button> Wedding Theme </button>     
-                </div>
-                <div> 
-                    <button> Wedding Location </button>     
-                </div> 
+            <div> 
+               <form>
+                   <label> Wedding Planner </label>
+                    <input type="text" placeholder=" enter wedding planner" naem="name" /> 
+                    
+                    <label> Wedding Theme </label>  
+                    <input type="text" placeholder="enter preferred theme " />  
+
+                    <label> Wedding Location </label>     
+                    <input type="text" placeholder="enter wedding location" /> 
+                </form> 
+            </div>
                 {/* Website main content */}
                 <article> 
                     <div>
