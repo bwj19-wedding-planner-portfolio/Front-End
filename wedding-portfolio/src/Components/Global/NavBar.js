@@ -16,6 +16,9 @@ export const NavBar = (props) => {
   if (localStorage.getItem('token')) {
     return(
       <nav>
+        <h3>
+          {greeting}
+        </h3>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/register">Register</NavLink>
         <NavLink to="/">Guest View</NavLink>
@@ -29,6 +32,9 @@ export const NavBar = (props) => {
   } else {
     return (
       <nav>
+        <h3>
+          {greeting} 
+        </h3>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/register">Register</NavLink>
         <NavLink to="/">Guest View</NavLink>
