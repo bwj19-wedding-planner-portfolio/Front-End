@@ -2,15 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, withRouter } from "react-router-dom"
 
+const AppWithRouter = withRouter(App);
 
-///import BrowserRouter - wrap App
-///import Semantic UI CSS
 
 ReactDOM.render(
 <BrowserRouter>
-  <App />
+  <AppWithRouter />
 </BrowserRouter>
 , document.getElementById('root'));
 

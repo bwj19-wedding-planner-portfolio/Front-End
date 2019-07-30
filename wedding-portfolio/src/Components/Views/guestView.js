@@ -1,7 +1,7 @@
 import React from 'react'
 import WeddingCard from '../WeddingCard/weddingCard';
 
-function guestView() {
+function GuestView() {
     return (
         <section>
             {/* Top section of the page content  */}
@@ -34,4 +34,4 @@ function guestView() {
     ); 
 }
 
-export default guestView; 
+export default GuestView; 

@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export const weddingArrayContext = createContext();
+export const WeddingsArrayContext = createContext();
