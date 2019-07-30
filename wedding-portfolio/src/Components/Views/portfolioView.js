@@ -2,6 +2,9 @@ import React from "react";
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
 import guestView from "../Views/guestView.js"
 
+
+// GET posts by logged in user through AxiosWithAuth//
+
 function PortfolioView() {
 
     return(
