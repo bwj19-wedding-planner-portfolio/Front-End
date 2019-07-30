@@ -1,29 +1,31 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+
 
 
 function WeddingForm() {
-    // This will change because we aren't setting it to state but to Post to the server???
-    const [newWedding, setNewWedding] = useState({ couple: "", location: "", theme: "", vendors: "" })
+    const [newWedding, setNewWedding] = useState({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" })
     
 
     function handleChange(event) {
-        console.log(event.target.name);
-        console.log(event.target.value);
+        // console.log(event.target.name);
+        // console.log(event.target.value);
         const updateWedding = {...newWedding, [event.target.name]: event.target.value};
         setNewWedding(updateWedding);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-
-        // this will change because onSubmit we will post to the server???
-        console.log(newWedding);
-        // Data.push(newWedding)
-        // console.log(Data)
-        console.log(props)
-        props.SETTER(Data)
-        setNewMember({ couple: "", location: "", theme: "", vendors: "" });
+        if (weddingToEdit) {
+            //on submit with "put" the edited object onto the weddings database
+        } else {
+            //on submit will "post" the new wedding onto the weddings database
+        } 
+        setNewWedding({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" });  
     }
+
+    useEffect(() => {
+        setNewWedding(props.weddingToEdit)
+    },[props.weddingToEdit])
 
     return (
         <div>
@@ -43,7 +45,7 @@ function WeddingForm() {
                     <input
                         type="text"
                         name="location"
-                        value={newWedding.location}
+                        value={newWedding.user_location}
                         onChange={handleChange}
                     />
                 </label>
@@ -52,7 +54,7 @@ function WeddingForm() {
                     <input
                         type="text"
                         name="theme"
-                        value={newWedding.theme}
+                        value={newWedding.wedding_theme}
                         onChange={handleChange}
 
                     />
