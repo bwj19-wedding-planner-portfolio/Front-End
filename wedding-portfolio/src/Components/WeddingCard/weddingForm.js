@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Form, Button } from 'semantic-ui-react'
 
 
 
@@ -29,47 +30,51 @@ function WeddingForm() {
 
     return (
         <div>
-            <form onSubmit={(event) => handleSubmit(event)}>
+            <Form onSubmit={(event) => handleSubmit(event)}>
                 <legend>Wedding Form</legend>
-                <label>
-                    Couple:
-                    <input
+                <Form.Field>
+                    <label>Couple Names</label>
+                    <input 
+                        placeholder='Couple Names' 
                         type="text"
                         name="couple"
                         value={newWedding.couple}
                         onChange={handleChange}
                     />
-                </label>
-                <label>
-                    Location:
-                    <input
+                </Form.Field>
+                <Form.Field>
+                    <label>Location</label>
+                    <input 
+                        placeholder='Location' 
                         type="text"
                         name="location"
                         value={newWedding.user_location}
                         onChange={handleChange}
                     />
-                </label>
-                <label>
-                    Theme:
+                </Form.Field>
+                <Form.Field>
+                    <label>Theme</label>
                     <input
+                        placeholder='Theme'
                         type="text"
                         name="theme"
                         value={newWedding.wedding_theme}
                         onChange={handleChange}
 
                     />
-                    </label>
-                <label>
-                    Vendors:
+                </Form.Field>
+                <Form.Field>
+                    <label>Vendors</label>
                     <input
+                        placeholder='Vendors'
                         type="text"
                         name="vendors"
                         value={newWedding.vendors}
                         onChange={handleChange}
                     />
-                </label>
-                <button>Submit</button>
-            </form>
+                </Form.Field>
+                <Button type='submit'>Submit</Button>
+            </Form>
         </div>
     )
 };
