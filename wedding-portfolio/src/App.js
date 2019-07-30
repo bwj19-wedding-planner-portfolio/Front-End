@@ -23,9 +23,9 @@ function App() {
         <Header />
         <NavBar />
       </div> 
-      <Route exact path="/" component={GuestView} />
-      <Route exact path="/login" component={Login}/>
-      <Route exact path="/register" component={Register}/>
+      <Route exact path="/" component={GuestView} /> 
+      <Route exact path="/login" component={Login}/> 
+      <Route exact path="/register" component={Register}/> 
 
       <Route exact path="/portfolioView" component={PortfolioView}/>
       {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}

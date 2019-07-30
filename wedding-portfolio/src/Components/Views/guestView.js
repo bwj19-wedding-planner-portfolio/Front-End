@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import WeddingCard from '../WeddingCard/weddingCard';
+import axios from "axios"; 
 
-function guestView() {
+function GuestView() {
+
+    const [guestView, setGuestView] = useState([])
+
+useEffect(() => {
+    axios
+    .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
+    .then(event => {
+        console.log("this is a list", event)
+
+        })
+        .catch(error => {
+          console.log("ERROR", error)  
+        })
+}, [])
+
     return (
         <section>
-            {/* Top section of the page content  */}
-            <div> 
-                <h1> Wedding Planner Portfolio </h1>
-            </div>
-            <div>
-                <button> Couples </button>
-            </div>
-            <div>
-                <button> Wedding Planners </button> 
-            </div>
             {/* drop down elements */}
                <div>
                     <button> Wedding Planner </button>   
@@ -34,4 +40,4 @@ function guestView() {
     ); 
 }
 
-export default guestView; 
+export default GuestView; 
