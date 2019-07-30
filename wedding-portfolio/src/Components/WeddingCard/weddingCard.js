@@ -2,10 +2,29 @@ import React from "react";
 import { Card, Image, Button } from 'semantic-ui-react'
 
 function WeddingCard(props) {
+    console.log(props)
 
     const {photo, couple_name, planner, user_location, wedding_theme} = props
 
-    const isLoggedIn = "true or false?"
+    function isLoggedIn() {
+        if (localStorage.getItem('token')) {
+            return(
+                <div>
+                <Button onClick={() => grabWedding(props)}>
+                    Edit
+                </Button> 
+                <Button onClick={() => deleteWedding(props)}>
+                    Delete
+                </Button>
+                </div>
+            )}
+        // } else {
+        //     return (
+                
+        //         // <Link>More Info</Link>
+        //     )
+        //   }
+        }
 
     // add NavLink to more info button, which will make specific wedding object active and route to the single wedding component>
 
@@ -40,18 +59,19 @@ function WeddingCard(props) {
                 </Card.Content>
                 <Card.Content extra>
                     {/*condition ? true : false. or condition && element*/}
+                    {isLoggedIn()}
 
-                    {isLoggedIn 
+                    {/* {isLoggedIn 
                         ? <Button onClick={() => grabWedding(props)}>
                             Edit
                         </Button> 
                         : <Link>More Info</Link>
-                    }
+                    } */}
 
-                    {isLoggedIn && <Button onClick={() => deleteWedding(props)}>
+                    {/* {isLoggedIn && <Button onClick={() => deleteWedding(props)}>
                         Delete
                     </Button>
-                    }
+                    } */}
                 </Card.Content>
             </Card>            
     )
