@@ -1,6 +1,10 @@
 import React from 'react'
 import WeddingCard from '../WeddingCard/weddingCard';
 
+
+//GET ALL POSTS no axiosWithAuth//
+// GET POSTS BY ID, no axiosWithAuth for sorting//
+
 function GuestView() {
     return (
         <section>

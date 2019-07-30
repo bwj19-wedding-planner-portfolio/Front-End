@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-// import { UserContext } from "/Users/lauradaugherty/Wedding Planner/Front-End/wedding-portfolio/src/Contexts/userContext.js"
+import { UserContext } from "../../Contexts/userContext"
 
 export const Login = (props) => {
   // const { user, setUser } = useContext(UserContext);
