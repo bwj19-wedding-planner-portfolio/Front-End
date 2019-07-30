@@ -1,8 +1,9 @@
 import React from "react";
+import { Card, Image } from 'semantic-ui-react'
 
 function WeddingCard(props) {
 
-    const {couple_name, planner, user_location, wedding_theme} = props
+    const {photo, couple_name, planner, user_location, wedding_theme} = props
 
     const isLoggedIn = "true or false?"
 
@@ -17,22 +18,31 @@ function WeddingCard(props) {
     // add function to the delete button to add an onClick alert that asks if they wanted to delete the wedding, if yes, then remove the wedding from database
 
     return (
-        <div>
-            <img src="#" atl="Wedding photo"/>
-            <h3>Couple: {couple_name}</h3>
-            <p>Planner: {planner}</p>
-            <p>Location: {user_location}</p>
-            <p>Theme: {wedding_theme}</p>
-            {/*condition ? true : false. or condition && element*/}
-            {isLoggedIn 
-                ? <button onClick={() => grabWedding(props)}>
-                    Edit
-                  </button> 
-                : <button>More Info</button>
-            }
-            {isLoggedIn && <button>Delete</button>}
-            
-        </div>
+             <Card>
+                <Image src={photo} wrapped ui={false} atl="Wedding photo" />
+                <Card.Content>
+                    <Card.Header>{couple_name}</Card.Header>
+                    <Card.Meta>
+                        <span className='date'>Planner: {planner}</span>
+                    </Card.Meta>
+                    <Card.Meta>
+                        <span className='date'>Theme: {wedding_theme}</span>
+                    </Card.Meta>
+                    {/* <Card.Description>
+                        Matthew is a musician living in Nashville.
+                    </Card.Description> */}
+                </Card.Content>
+                <Card.Content extra>
+                    {/*condition ? true : false. or condition && element*/}
+                    {isLoggedIn 
+                        ? <button onClick={() => grabWedding(props)}>
+                            Edit
+                        </button> 
+                        : <button>More Info</button>
+                    }
+                    {isLoggedIn && <button>Delete</button>}
+                </Card.Content>
+            </Card>            
     )
 };
 
