@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export const Register = () => {
+export const Register = (props) => {
   const [userID, setUserID] = useState({
     firstName: "",
     lastName: "",
@@ -27,7 +27,7 @@ export const Register = () => {
         // console.log("loggedIn State", loggedIn);
         console.log("RESPONSE", res);
         localStorage.setItem("token", res.data.token);
-        this.props.history.push("/");
+        props.history.push("/");
       })
       .catch(err => {
         // setIsLoading(false);

@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+// import { UserContext } from "/Users/lauradaugherty/Wedding Planner/Front-End/wedding-portfolio/src/Contexts/userContext.js"
 
-export const Login = () => {
+export const Login = (props) => {
+  // const { user, setUser } = useContext(UserContext);
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
   });
 
   const handleChange = event => {
-    setCredentials({ [event.target.name]: event.target.value });
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
 
   const sendCreds = e => {
@@ -23,7 +25,10 @@ export const Login = () => {
         // console.log("function", setLoggedIn);
         // setLoggedIn(true);
         // console.log("loggedIn State", loggedIn);
-        this.props.history.push("/");
+        console.log("response", res)
+        localStorage.setItem('token', res.data.token);
+        // setUser()
+        props.history.push("/");
       })
       .catch(err => {
         // setIsLoading(false);
