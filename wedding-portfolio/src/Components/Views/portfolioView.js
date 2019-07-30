@@ -28,7 +28,9 @@ useEffect(() => {
        {/* Webstie main content */}
     <article> 
          <div> 
-            <WeddingCard /> 
+           { portFolioView.map(watch => {
+               return <WeddingCard key={watch.id} watch={ watch } /> 
+           })} 
          </div>
     </article>
 </section>
