@@ -1,21 +1,24 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../Contexts/userContext";
-import { NavLink } from "react-router-dom";
+import React, {useContext} from "react"
+import {GreetingContext} from "../../Contexts/greetingContext"
+import { NavLink } from "react-router-dom"
 
-export const NavBar = props => {
-  const { user, setUser } = useContext(UserContext);
-  console.log("user", user);
+export const NavBar = (props) => {
+  const { greeting, setGreeting } = useContext(GreetingContext)
+  console.log("greeting", greeting)
 
   const logout = () => {
-    console.log("logout props", props.routeProps);
-    props.routeProps.history.push("/");
-    localStorage.clear();
-    setUser(null);
-  };
+    console.log("logout props", props.routeProps)
+    props.routeProps.history.push("/")
+    localStorage.clear()
+    setGreeting("Hi!")
+  }
 
   if (localStorage.getItem("token")) {
     return (
       <nav>
+        <h3>
+          {greeting}
+        </h3>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/register">Register</NavLink>
         <NavLink to="/">Guest View</NavLink>
@@ -27,6 +30,9 @@ export const NavBar = props => {
   } else {
     return (
       <nav>
+        <h3>
+          {greeting} 
+        </h3>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/register">Register</NavLink>
         <NavLink to="/">Guest View</NavLink>

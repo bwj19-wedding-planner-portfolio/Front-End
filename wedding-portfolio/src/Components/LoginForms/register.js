@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import * as Yup from "yup";
+import { GreetingContext } from "../../Contexts/greetingContext"
 
-export const Register = props => {
+export const Register = (props) => {
+  const { setGreeting } = useContext(GreetingContext);
+
   const [userID, setUserID] = useState({
     firstName: "",
     lastName: "",
     username: "",
-    password: ""
+    password: "",
+    email: "",
+    location: "",
   });
 
   // VALIDATION SCHEMA
@@ -39,6 +44,7 @@ export const Register = props => {
         // console.log("loggedIn State", loggedIn);
         console.log("RESPONSE", res);
         localStorage.setItem("token", res.data.token);
+        setGreeting(res.data.username);
         props.history.push("/");
       })
       .catch(err => {
@@ -64,6 +70,12 @@ export const Register = props => {
 
         <label>Password</label>
         <input name="password" type="password" onChange={handleChange} />
+
+        <label>Email</label>
+        <input name="email" type="email" onChange={handleChange} />
+
+        <label>Location</label>
+        <input name="location" type="text" onChange={handleChange} />
 
         <button type="submit" />
       </form>

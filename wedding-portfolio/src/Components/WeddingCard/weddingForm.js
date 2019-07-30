@@ -1,73 +1,80 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import { Form, Button } from 'semantic-ui-react'
+
 
 
 function WeddingForm() {
-    // This will change because we aren't setting it to state but to Post to the server???
-    const [newWedding, setNewWedding] = useState({ couple: "", location: "", theme: "", vendors: "" })
+    const [newWedding, setNewWedding] = useState({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" })
     
 
     function handleChange(event) {
-        console.log(event.target.name);
-        console.log(event.target.value);
+        // console.log(event.target.name);
+        // console.log(event.target.value);
         const updateWedding = {...newWedding, [event.target.name]: event.target.value};
         setNewWedding(updateWedding);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-
-        // this will change because onSubmit we will post to the server???
-        console.log(newWedding);
-        // Data.push(newWedding)
-        // console.log(Data)
-        console.log(props)
-        props.SETTER(Data)
-        setNewMember({ couple: "", location: "", theme: "", vendors: "" });
+        if (weddingToEdit) {
+            //on submit with "put" the edited object onto the weddings database
+        } else {
+            //on submit will "post" the new wedding onto the weddings database
+        } 
+        setNewWedding({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" });  
     }
+
+    useEffect(() => {
+        setNewWedding(props.weddingToEdit)
+    },[props.weddingToEdit])
 
     return (
         <div>
-            <form onSubmit={(event) => handleSubmit(event)}>
+            <Form onSubmit={(event) => handleSubmit(event)}>
                 <legend>Wedding Form</legend>
-                <label>
-                    Couple:
-                    <input
+                <Form.Field>
+                    <label>Couple Names</label>
+                    <input 
+                        placeholder='Couple Names' 
                         type="text"
                         name="couple"
                         value={newWedding.couple}
                         onChange={handleChange}
                     />
-                </label>
-                <label>
-                    Location:
-                    <input
+                </Form.Field>
+                <Form.Field>
+                    <label>Location</label>
+                    <input 
+                        placeholder='Location' 
                         type="text"
                         name="location"
-                        value={newWedding.location}
+                        value={newWedding.user_location}
                         onChange={handleChange}
                     />
-                </label>
-                <label>
-                    Theme:
+                </Form.Field>
+                <Form.Field>
+                    <label>Theme</label>
                     <input
+                        placeholder='Theme'
                         type="text"
                         name="theme"
-                        value={newWedding.theme}
+                        value={newWedding.wedding_theme}
                         onChange={handleChange}
 
                     />
-                    </label>
-                <label>
-                    Vendors:
+                </Form.Field>
+                <Form.Field>
+                    <label>Vendors</label>
                     <input
+                        placeholder='Vendors'
                         type="text"
                         name="vendors"
                         value={newWedding.vendors}
                         onChange={handleChange}
                     />
-                </label>
-                <button>Submit</button>
-            </form>
+                </Form.Field>
+                <Button type='submit'>Submit</Button>
+            </Form>
         </div>
     )
 };

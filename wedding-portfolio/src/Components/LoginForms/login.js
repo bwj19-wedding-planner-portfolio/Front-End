@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { UserContext } from "../../Contexts/userContext"
+import { GreetingContext } from "../../Contexts/greetingContext"
 
 export const Login = (props) => {
-  // const { user, setUser } = useContext(UserContext);
+  const { setGreeting } = useContext(GreetingContext);
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
@@ -27,7 +27,7 @@ export const Login = (props) => {
         // console.log("loggedIn State", loggedIn);
         console.log("response", res)
         localStorage.setItem('token', res.data.token);
-        // setUser()
+        setGreeting(res.data.message);
         props.history.push("/");
       })
       .catch(err => {
