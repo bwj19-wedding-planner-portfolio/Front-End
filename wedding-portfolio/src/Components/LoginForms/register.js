@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import * as Yup from "yup";
 import { GreetingContext } from "../../Contexts/greetingContext"
 
 export const Register = (props) => {
@@ -13,6 +14,17 @@ export const Register = (props) => {
     email: "",
     location: "",
   });
+
+  // VALIDATION SCHEMA
+  validationSchema: Yup.object().shape({
+    email: Yup.string()
+      .email("Email not valid")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be 6 characters or longer")
+      .required("Password is required")
+  });
+  // END OF VALIDATION
 
   const handleChange = event => {
     setUserID({ ...userID, [event.target.name]: event.target.value });
@@ -70,23 +82,3 @@ export const Register = (props) => {
     </div>
   );
 };
-
-//  user: {
-//   userId: “”,
-//    firstName: "",
-//    lastName: "",
-//    username: "",
-//    password: "",
-//    weddings: [
-//      {
-//        weddingId: "",
-//        plannerId: “”,
-//        date: “”,
-//        image: "",
-//        description: "",
-//        vendors: "",
-//        theme: "",
-//        location: ""
-//      }
-//    ]
-//  }
