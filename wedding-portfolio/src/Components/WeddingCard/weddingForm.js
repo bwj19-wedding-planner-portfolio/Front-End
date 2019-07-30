@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Form, Button } from 'semantic-ui-react'
+import { axiosWithAuth } from "../../utilities/axiosWithAuth"
 
 
 
@@ -8,8 +9,6 @@ function WeddingForm() {
     
 
     function handleChange(event) {
-        // console.log(event.target.name);
-        // console.log(event.target.value);
         const updateWedding = {...newWedding, [event.target.name]: event.target.value};
         setNewWedding(updateWedding);
     }
@@ -17,9 +16,17 @@ function WeddingForm() {
     function handleSubmit(event) {
         event.preventDefault();
         if (weddingToEdit) {
-            //on submit with "put" the edited object onto the weddings database
+            axiosWithAuth()
+                .put()
+                .then(response => console.log(respose))
+                .catch(error => console.log("Error", error))
         } else {
             //on submit will "post" the new wedding onto the weddings database
+            // https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts
+            axiosWithAuth()
+                .post("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts", newWedding)
+                .then(response => console.log(response))
+                .catch(errpr => console.log("Error", error))
         } 
         setNewWedding({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" });  
     }
@@ -71,6 +78,7 @@ function WeddingForm() {
                         name="vendors"
                         value={newWedding.vendors}
                         onChange={handleChange}
+
                     />
                 </Form.Field>
                 <Button type='submit'>Submit</Button>

@@ -1,12 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+// import { Link } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
+// import SingleWedding from "./singleWedding.js"
 
 
 function WeddingCard(props) {
     console.log(props)
 
-    const {photo, couple_name, planner, user_location, wedding_theme} = props
+    const [weddingToEdit, setWeddingToEdit] = useState(null)
+
+    const {photo, couple_name, firstName, user_location, wedding_theme} = props
 
     function isLoggedIn() {
         if (localStorage.getItem('token')) {
@@ -19,21 +22,25 @@ function WeddingCard(props) {
                     Delete
                 </Button>
                 </div>
-            )
-        } else {
-            return (
+            ) }
+        // } else {
+        //     return (
                 
-                <Link>More Info</Link>
-            )
-          }
-        }
+        //         // <Link to="/singleWedding">More Info</Link>
+               
+        //     // <Route path="/singleWedding" render={props => <SingleWedding {...props} wedding={wedding} /> } />
+        //     )
+        // }
+    }
 
     // add NavLink to more info button, which will make specific wedding object active and route to the single wedding component>
 
     //const [weddingToEdit, setWeddingToEdit] = useState({}) ---> add to where global state lives or the portfolio view?
     function grabWedding(wedding) { 
-        props.setWeddingToEdit(wedding);
-        //Put NavLink Here to wedding form
+        setWeddingToEdit(wedding);
+        console.log(wedding);
+        // history.push("/weddingForm")
+        
     }
 
     // add function to the delete button to add an onClick alert that asks if they wanted to delete the wedding, if yes, then remove the wedding from database
@@ -47,7 +54,7 @@ function WeddingCard(props) {
                 <Card.Content>
                     <Card.Header>{couple_name}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>Planner: {planner}</span>
+                        <span className='date'>Planner: {firstName}</span>
                     </Card.Meta>
                     <Card.Meta>
                         <span className='date'>Location: {user_location}</span>
