@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
-import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js"; 
+import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js";
+import axios from 'axios' 
 
 
 
@@ -11,7 +12,7 @@ function PortfolioView() {
 const [portFolioView, setPortFolioView] = useState([])
 
 useEffect(() => {
-    axiosWithAuth
+    axiosWithAuth()
     .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts")
     .then(look => {
          console.log("this is a list", look)
