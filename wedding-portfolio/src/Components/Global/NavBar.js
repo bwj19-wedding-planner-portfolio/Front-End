@@ -1,16 +1,16 @@
 import React, {useContext} from "react"
-import {UserContext} from "/Users/lauradaugherty/Wedding Planner/Front-End/wedding-portfolio/src/Contexts/userContext.js"
+import {GreetingContext} from "../../Contexts/greetingContext"
 import { NavLink } from "react-router-dom"
 
 export const NavBar = (props) => {
-  const { user, setUser } = useContext(UserContext)
-  console.log("user", user)
+  const { greeting, setGreeting } = useContext(GreetingContext)
+  console.log("greeting", greeting)
 
   const logout = () => {
     console.log("logout props", props.routeProps)
     props.routeProps.history.push("/")
     localStorage.clear()
-    setUser(null)
+    setGreeting("Hi!")
   }
 
   if (localStorage.getItem('token')) {

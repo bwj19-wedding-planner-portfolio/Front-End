@@ -16,20 +16,18 @@ import { Header } from "./Components/Global/Header";
 import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
 //Utilities//
-import { UserContext } from "./Contexts/userContext";
+import { GreetingContext } from "./Contexts/greetingContext";
 import { WeddingsArrayContext } from "./Contexts/weddingContext";
 import { PrivateRoute } from "./Utilities/PrivateRoute";
 
 function App(props) {
   console.log("app props", props)
 
-  const [user, setUser] = useState(null)
+  const [greeting, setGreeting] = useState(null)
   const [weddingsArray, setWeddingsArray] = useState("Sneaky Wedding Array")
-
-
-        return (
-
-    <UserContext.Provider value={{user, setUser}}>
+  
+  return (
+    <GreetingContext.Provider value={{greeting, setGreeting}}>
       <WeddingsArrayContext.Provider value={{weddingsArray, setWeddingsArray}}>
       <div className="App">  
 
@@ -48,9 +46,9 @@ function App(props) {
         {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}
         <PrivateRoute exact path="/singleWedding" component={SingleWedding} />
 
-    </div> 
-     </WeddingsArrayContext.Provider>
-    </UserContext.Provider>
+      </div>
+      </WeddingsArrayContext.Provider>
+    </GreetingContext.Provider>
 
   )
 }
