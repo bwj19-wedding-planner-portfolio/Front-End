@@ -1,23 +1,18 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-<<<<<<< HEAD
 import * as Yup from "yup";
+import { GreetingContext } from "../../Contexts/greetingContext";
 
 export const Register = props => {
-=======
-import { GreetingContext } from "../../Contexts/greetingContext"
-
-export const Register = (props) => {
   const { setGreeting } = useContext(GreetingContext);
 
->>>>>>> 8a687d2af1491d7eb5f285d66a4bfc4dae082937
   const [userID, setUserID] = useState({
     firstName: "",
     lastName: "",
     username: "",
     password: "",
     email: "",
-    location: "",
+    location: ""
   });
 
   // VALIDATION SCHEMA
