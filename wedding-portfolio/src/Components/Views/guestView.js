@@ -11,7 +11,7 @@ useEffect(() => {
     .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
     .then(event => {
         console.log("this is a list", event)
-
+        setGuestView(event.data)
         })
         .catch(error => {
           console.log("ERROR", error)  
@@ -28,12 +28,14 @@ useEffect(() => {
                     <button> Wedding Theme </button>     
                 </div>
                 <div> 
-                    <button> Wedding Location </button>      
+                    <button> Wedding Location </button>     
                 </div> 
                 {/* Website main content */}
                 <article> 
                     <div>
-                        <WeddingCard /> 
+                    { guestView.map(view => {
+                    return <WeddingCard key={view.id} view={ view } />
+                    })}
                     </div> 
                 </article>
         </section>
