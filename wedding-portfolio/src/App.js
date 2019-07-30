@@ -25,7 +25,7 @@ function App(props) {
 
   const [greeting, setGreeting] = useState(null)
   const [weddingsArray, setWeddingsArray] = useState("Sneaky Wedding Array")
-
+  
   return (
     <GreetingContext.Provider value={{greeting, setGreeting}}>
       <WeddingsArrayContext.Provider value={{weddingsArray, setWeddingsArray}}>
@@ -49,7 +49,6 @@ function App(props) {
       </div>
       </WeddingsArrayContext.Provider>
     </GreetingContext.Provider>
-
 
   )
 }

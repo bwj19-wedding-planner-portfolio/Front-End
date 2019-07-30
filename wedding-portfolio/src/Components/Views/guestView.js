@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import WeddingCard from '../WeddingCard/weddingCard';
+import axios from "axios"; 
 
+function GuestView() {
 
-//GET ALL POSTS no axiosWithAuth//
-// GET POSTS BY ID, no axiosWithAuth for sorting//
+    const [guestView, setGuestView] = useState([])
+
+useEffect(() => {
+    axios
+    .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
+    .then(event => {
+        console.log("this is a list", event)
+        setGuestView(event.data)
+        })
+        .catch(error => {
+          console.log("ERROR", error)  
+        })
+}, [])
+
 
 function GuestView() {
     return (
         <section>
-            {/* Top section of the page content  */}
-            <div> 
-                <h1> Wedding Planner Portfolio </h1>
-            </div>
-            <div>
-                <button> Couples </button>
-            </div>
-            <div>
-                <button> Wedding Planners </button> 
-            </div>
             {/* drop down elements */}
                <div>
                     <button> Wedding Planner </button>   
@@ -26,12 +30,14 @@ function GuestView() {
                     <button> Wedding Theme </button>     
                 </div>
                 <div> 
-                    <button> Wedding Location </button>      
+                    <button> Wedding Location </button>     
                 </div> 
                 {/* Website main content */}
                 <article> 
                     <div>
-                        <WeddingCard /> 
+                    { guestView.map(view => {
+                    return <WeddingCard key={view.id} view={ view } />
+                    })}
                     </div> 
                 </article>
         </section>
