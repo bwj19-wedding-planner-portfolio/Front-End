@@ -24,7 +24,7 @@ useEffect(() => {
             <div> 
                <form>
                    <label> Wedding Planner </label>
-                    <input type="text" placeholder=" enter wedding planner" naem="name" /> 
+                    <input type="text" placeholder=" enter wedding planner"  /> 
                     
                     <label> Wedding Theme </label>  
                     <input type="text" placeholder="enter preferred theme " />  
