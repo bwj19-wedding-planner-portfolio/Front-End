@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js";
-import axios from 'axios' 
+
 
 
 
