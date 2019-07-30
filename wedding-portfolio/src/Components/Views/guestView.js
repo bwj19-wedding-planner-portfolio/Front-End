@@ -2,21 +2,26 @@ import React, { useEffect, useState } from "react";
 import WeddingCard from '../WeddingCard/weddingCard';
 import axios from "axios"; 
 
+
+
+
+
+
+
 function GuestView() {
+  const [guestView, setGuestView] = useState([])
 
-    const [guestView, setGuestView] = useState([])
-
-useEffect(() => {
-    axios
-    .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
-    .then(event => {
-        console.log("this is a list", event)
-        setGuestView(event.data)
-        })
-        .catch(error => {
-          console.log("ERROR", error)  
-        })
-}, [])
+  useEffect(() => {
+      axios
+      .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
+      .then(event => {
+          console.log("this is an event list", event)
+          setGuestView(event.data)
+          })
+          .catch(error => {
+            console.log("ERROR", error)  
+          })
+  }, [])
 
     return (
         <section>
