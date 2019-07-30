@@ -13,7 +13,7 @@ export const NavBar = (props) => {
     setUser(null)
   }
 
-  if (user) {
+  if (localStorage.getItem('token')) {
     return(
       <nav>
         <NavLink to="/login">Login</NavLink>
@@ -32,21 +32,8 @@ export const NavBar = (props) => {
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/register">Register</NavLink>
         <NavLink to="/">Guest View</NavLink>
-        <NavLink to="/portfolioView">Portfolio View</NavLink>
-        <button onClick={logout}>
-          Logout
-        </button>
       </nav>
     )
   }
 
 }
-
-
-///conditional rendering (if "user" render "portfolio View" and "add wedding")
-
-// 	Logout:
-// 		logout=(event) => {
-// 		this.props.history.push(‘/guest’)
-// 		localStorage.clear()
-// 		}
