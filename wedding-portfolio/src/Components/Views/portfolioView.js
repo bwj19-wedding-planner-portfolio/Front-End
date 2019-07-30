@@ -3,6 +3,9 @@ import WeddingCard from "../WeddingCard/weddingCard.js";
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js"; 
 
 
+
+// GET posts by logged in user through AxiosWithAuth//
+
 function PortfolioView() {
 
 const [portFolioView, setPortFolioView] = useState([])

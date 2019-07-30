@@ -18,6 +18,8 @@ useEffect(() => {
         })
 }, [])
 
+
+function GuestView() {
     return (
         <section>
             {/* drop down elements */}
