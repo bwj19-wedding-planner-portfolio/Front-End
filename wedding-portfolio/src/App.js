@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //Dependancies//
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
@@ -6,8 +5,6 @@ import { Route } from "react-router-dom";
 //Styling//
 import "./App.css";
 
-=======
->>>>>>> e6e1adea8d74904ff9936ac839d1897375ddb277
 //Components//
 import GuestView from "./Components/Views/guestView";
 import PortfolioView from "./Components/Views/portfolioView.js";
