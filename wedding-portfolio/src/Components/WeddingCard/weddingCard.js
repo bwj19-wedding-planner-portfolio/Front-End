@@ -10,6 +10,7 @@ import { axiosWithAuth } from "../../Utilities/axiosWithAuth";
 
 
 function WeddingCard(props) {
+    console.log(props)
 
     const routeProps = useContext(RouteContext)
 
