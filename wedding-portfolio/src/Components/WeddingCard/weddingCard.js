@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 // import { Link } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
+import { PrivateRoute } from "../../Utilities/PrivateRoute";
+import { ActiveCardContext } from '../../Contexts/activeCardContext'
+import { RouteContext } from '../../Contexts/routeContext'
+import { axiosWithAuth } from "../../Utilities/axiosWithAuth";
+
 // import SingleWedding from "./singleWedding.js"
 
 
 function WeddingCard(props) {
-    console.log(props)
 
-    const [weddingToEdit, setWeddingToEdit] = useState(null)
+    const routeProps = useContext(RouteContext)
 
-    const {photo, couple_name, firstName, user_location, wedding_theme} = props.view
+    const { activeCard, setActiveCard} = useContext(ActiveCardContext)
+
+    const {id, photo, couple_name, firstName, user_location, wedding_theme} = props.view
 
     function isLoggedIn() {
         if (localStorage.getItem('token')) {
@@ -28,7 +34,7 @@ function WeddingCard(props) {
                 
         //         // <Link to="/singleWedding">More Info</Link>
                
-        //     // <Route path="/singleWedding" render={props => <SingleWedding {...props} wedding={wedding} /> } />
+        //     // <PrivateRoute path="/singleWedding" render={props => <SingleWedding {...props} wedding={wedding} /> } />
         //     )
         // }
     }
@@ -37,15 +43,22 @@ function WeddingCard(props) {
 
     //const [weddingToEdit, setWeddingToEdit] = useState({}) ---> add to where global state lives or the portfolio view?
     function grabWedding(wedding) { 
-        setWeddingToEdit(wedding);
+        setActiveCard(wedding);
         console.log(wedding);
-        // history.push("/weddingForm")
-
+        routeProps.routeProps.history.push("/weddingForm")
     }
 
     // add function to the delete button to add an onClick alert that asks if they wanted to delete the wedding, if yes, then remove the wedding from database
     function deleteWedding(wedding) {
         console.log(wedding);
+        axiosWithAuth()
+            .delete(`https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/${id}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log("error", err)
+            })
     }
 
     return (
