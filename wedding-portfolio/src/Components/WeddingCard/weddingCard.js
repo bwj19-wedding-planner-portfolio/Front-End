@@ -10,13 +10,14 @@ import SingleWedding from "./SingleWedding.js"
 
 
 function WeddingCard(props) {
-    console.log(props)
+    console.log("wedding card props", props)
 
     const routeProps = useContext(RouteContext)
 
     const { activeCard, setActiveCard} = useContext(ActiveCardContext)
 
-    const {id, photo, couple_name, firstName, user_location, wedding_theme} = props.view
+    const {id, photo, couple_name, firstName, user_location, wedding_theme} = props.watch
+    
 
     function isLoggedIn() {
         if (localStorage.getItem('token')) {

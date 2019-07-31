@@ -12,7 +12,7 @@ import { Register } from "./Components/LoginForms/register";
 import { Login } from "./Components/LoginForms/login";
 import { NavBar } from "./Components/Global/NavBar";
 import { Header } from "./Components/Global/Header";
-// import WeddingForm from "./Components/WeddingCard/weddingForm";
+import WeddingForm from "./Components/WeddingCard/weddingForm";
 // import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
 //Utilities//
@@ -47,7 +47,7 @@ function App(props) {
 
             {/* Private Routes */}
             <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
-            {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}
+            <PrivateRoute exact path="/weddingForm" component={WeddingForm} />
             {/* <PrivateRoute exact path="/singleWedding" component={SingleWedding} /> */}
 
           </div>

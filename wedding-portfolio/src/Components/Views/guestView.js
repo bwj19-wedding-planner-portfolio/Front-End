@@ -7,6 +7,7 @@ import { Item } from "semantic-ui-react";
 function GuestView() {
   const [guestView, setGuestView] = useState([]);
 
+
   const [categories, setCategories] = useState({
     description: "",
     wedding_theme: "",
@@ -81,7 +82,7 @@ function GuestView() {
       <article>
         <div>
           {guestView.map(view => {
-            return <WeddingCard key={view.id} view={view} />;
+            return <WeddingCard key={view.id} watch={view} />;
           })}
         </div>
       </article>
