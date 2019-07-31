@@ -3,7 +3,6 @@ import { Card, Image } from "semantic-ui-react";
 
 function SingleWedding(props) {
   // const [singleWedding, setSingleWedding] = useState()
-  console.log(props)
 
   const {
     photo,
