@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
 import { PrivateRoute } from "../../Utilities/PrivateRoute";
 import { ActiveCardContext } from '../../Contexts/activeCardContext'
 import { RouteContext } from '../../Contexts/routeContext'
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth";
 
-// import SingleWedding from "./singleWedding.js"
+import SingleWedding from "./SingleWedding.js"
 
 
 function WeddingCard(props) {
@@ -28,15 +28,18 @@ function WeddingCard(props) {
                     Delete
                 </Button>
                 </div>
-            ) }
-        // } else {
-        //     return (
-                
-        //         // <Link to="/singleWedding">More Info</Link>
-               
-        //     // <PrivateRoute path="/singleWedding" render={props => <SingleWedding {...props} wedding={wedding} /> } />
-        //     )
-        // }
+            )
+        } else {
+            return ( 
+                <div>
+                <Link to="/singleWedding">More Info</Link>
+                <PrivateRoute 
+                    path="/singleWedding" 
+                    render={props => <SingleWedding {...props}/>}
+                />
+                </div>
+            )
+        }
     }
 
     // add NavLink to more info button, which will make specific wedding object active and route to the single wedding component>
