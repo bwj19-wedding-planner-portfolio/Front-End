@@ -25,7 +25,7 @@ function App(props) {
   const routeProps = props
   console.log("app props", props)
 
-  const [greeting, setGreeting] = useState(null)
+  const [greeting, setGreeting] = useState("Hi!")
   const [activeCard, setActiveCard] = useState(null)
   
   return (
@@ -37,7 +37,7 @@ function App(props) {
 
             <div> 
               <Header />
-              <NavBar routeProps={routeProps}/>
+              <NavBar />
             </div> 
 
             <Route exact path="/" component={GuestView} />
