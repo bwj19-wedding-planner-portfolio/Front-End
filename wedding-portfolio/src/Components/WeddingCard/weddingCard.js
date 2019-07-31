@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
 import { PrivateRoute } from "../../Utilities/PrivateRoute";
 import { ActiveCardContext } from '../../Contexts/activeCardContext'
@@ -32,17 +32,20 @@ function WeddingCard(props) {
         } else {
             return ( 
                 <div>
+
+                {console.log(props)}
                 <Link to="/singleWedding">More Info</Link>
-                <PrivateRoute 
+                <Route 
                     path="/singleWedding" 
-                    render={props => <SingleWedding {...props}/>}
+                    component={SingleWedding
+                    // render={props => <SingleWedding props={props.view}
+                    }
                 />
                 </div>
             )
         }
     }
 
-    // add NavLink to more info button, which will make specific wedding object active and route to the single wedding component>
 
     //const [weddingToEdit, setWeddingToEdit] = useState({}) ---> add to where global state lives or the portfolio view?
     function grabWedding(wedding) { 
@@ -51,7 +54,7 @@ function WeddingCard(props) {
         routeProps.routeProps.history.push("/weddingForm")
     }
 
-    // add function to the delete button to add an onClick alert that asks if they wanted to delete the wedding, if yes, then remove the wedding from database
+    // add function to the delete button 
     function deleteWedding(wedding) {
         console.log(wedding);
         axiosWithAuth()
@@ -78,25 +81,10 @@ function WeddingCard(props) {
                     <Card.Meta>
                         <span className='date'>Theme: {wedding_theme}</span>
                     </Card.Meta>
-                    {/* <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description> */}
+                 
                 </Card.Content>
                 <Card.Content extra>
-                    {/*condition ? true : false. or condition && element*/}
                     {isLoggedIn()}
-
-                    {/* {isLoggedIn 
-                        ? <Button onClick={() => grabWedding(props)}>
-                            Edit
-                        </Button> 
-                        : <Link>More Info</Link>
-                    } */}
-
-                    {/* {isLoggedIn && <Button onClick={() => deleteWedding(props)}>
-                        Delete
-                    </Button>
-                    } */}
                 </Card.Content>
             </Card>            
     )
