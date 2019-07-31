@@ -30,7 +30,7 @@ useEffect(() => {
             ...categories, [event.target.name]: event.target.value 
         })
     }
-console.log("this palnner", categories.planner)
+
 
     return (
         <section>
