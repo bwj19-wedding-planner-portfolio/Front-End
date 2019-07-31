@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import WeddingCard from '../WeddingCard/weddingCard';
 import axios from "axios"; 
 
@@ -59,4 +60,4 @@ console.log("this palnner", categories.planner)
     ); 
 }
 
-export default GuestView; 
+export default GuestView;
