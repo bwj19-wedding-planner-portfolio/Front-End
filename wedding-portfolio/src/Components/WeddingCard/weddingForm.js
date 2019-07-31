@@ -9,10 +9,13 @@ import { id } from "postcss-selector-parser";
 
 function WeddingForm() {
     const [newWedding, setNewWedding] = useState({ 
-        couple_name: "", 
-        wedding_theme: "", 
-        wedding_location: "", 
-        vendors: "" 
+        couple_name: "",
+        wedding_theme: "",
+        wedding_date: "",
+        photo: "",
+        location: "",
+        planner: "",
+        vendors: ""
     })
     const { activeCard, setActiveCard} = useContext(ActiveCardContext)
 
@@ -27,8 +30,8 @@ function WeddingForm() {
     function handleSubmit(event) {
         event.preventDefault();
         if (activeCard) {
-            console.log(activeCard)
-            setNewWedding(...activeCard)
+            console.log("activeCard", activeCard)
+            // setNewWedding(...activeCard)
             axiosWithAuth()
                     //A PUT request to this endpoint where ":id" is replaced by the post ID, will allow the logged in user to edit their post
                 .put(`https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/${activeCard.id}`)
@@ -37,6 +40,8 @@ function WeddingForm() {
         } else {
             //on submit will "post" the new wedding onto the weddings database
             // https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts
+            console.log("newWedding", newWedding)
+
             axiosWithAuth()
                 .post("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts", newWedding)
                 .then(response => console.log(response))
@@ -64,12 +69,22 @@ function WeddingForm() {
                     />
                 </Form.Field>
                 <Form.Field>
+                    <label>Wedding Date</label>
+                    <input 
+                        placeholder='Couple Names' 
+                        type="text"
+                        name="wedding_date"
+                        value={newWedding.wedding_date}
+                        onChange={handleChange}
+                    />
+                </Form.Field>
+                <Form.Field>
                     <label>Location</label>
                     <input 
                         placeholder='Location' 
                         type="text"
-                        name="wedding_location"
-                        value={newWedding.wedding_location}
+                        name="location"
+                        value={newWedding.location}
                         onChange={handleChange}
                     />
                 </Form.Field>
@@ -91,6 +106,28 @@ function WeddingForm() {
                         type="text"
                         name="vendors"
                         value={newWedding.vendors}
+                        onChange={handleChange}
+
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <label>Photo</label>
+                    <input
+                        placeholder='Photo'
+                        type="text"
+                        name="photo"
+                        value={newWedding.photo}
+                        onChange={handleChange}
+
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <label>Planner</label>
+                    <input
+                        placeholder='Planner'
+                        type="text"
+                        name="planner"
+                        value={newWedding.planner}
                         onChange={handleChange}
 
                     />
