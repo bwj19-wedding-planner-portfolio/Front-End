@@ -13,41 +13,46 @@ import { Login } from "./Components/LoginForms/login";
 import { NavBar } from "./Components/Global/NavBar";
 import { Header } from "./Components/Global/Header";
 // import WeddingForm from "./Components/WeddingCard/weddingForm";
-import SingleWedding from "./Components/WeddingCard/SingleWedding";
+// import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
 //Utilities//
 import { GreetingContext } from "./Contexts/greetingContext";
-import { WeddingsArrayContext } from "./Contexts/weddingContext";
+import { RouteContext } from "./Contexts/routeContext";
+import { ActiveCardContext } from "./Contexts/activeCardContext";
 import { PrivateRoute } from "./Utilities/PrivateRoute";
 
 function App(props) {
+  const routeProps = props
   console.log("app props", props)
 
   const [greeting, setGreeting] = useState(null)
-  const [weddingsArray, setWeddingsArray] = useState("Sneaky Wedding Array")
+  const [activeCard, setActiveCard] = useState(null)
   
   return (
     <GreetingContext.Provider value={{greeting, setGreeting}}>
-      <WeddingsArrayContext.Provider value={{weddingsArray, setWeddingsArray}}>
-      <div className="App">  
+      <ActiveCardContext.Provider value={{activeCard, setActiveCard}}>
+        <RouteContext.Provider value={{routeProps}}>
 
-        <div> 
-          <Header />
-          <NavBar routeProps={props}/>
-        </div> 
+          <div className="App">  
 
-        <Route exact path="/" component={GuestView} />
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/register" component={Register}/>
+            <div> 
+              <Header />
+              <NavBar routeProps={routeProps}/>
+            </div> 
+
+            <Route exact path="/" component={GuestView} />
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/register" component={Register}/>
 
 
-        {/* Private Routes */}
-        <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
-        {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}
-        <PrivateRoute exact path="/singleWedding" component={SingleWedding} />
+            {/* Private Routes */}
+            <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
+            {/* <Route exact path="/weddingForm" component={WeddingForm} /> */}
+            {/* <PrivateRoute exact path="/singleWedding" component={SingleWedding} /> */}
 
-      </div>
-      </WeddingsArrayContext.Provider>
+          </div>
+        </RouteContext.Provider>
+      </ActiveCardContext.Provider>
     </GreetingContext.Provider>
 
   )
