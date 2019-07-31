@@ -16,7 +16,7 @@ useEffect(() => {
     .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts")
     .then(look => {
          console.log("this is a list", look)
-        setPortFolioView(look.data)
+        setPortFolioView(look.data.posts)
         })
         .catch(error => {
         console.log("ERROR", error)  

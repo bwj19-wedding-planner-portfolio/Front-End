@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Form, Button } from 'semantic-ui-react'
-import { axiosWithAuth } from "../../utilities/axiosWithAuth"
+import { axiosWithAuth } from "../../Utilities/axiosWithAuth"
 import { ActiveCardContext } from '../../Contexts/activeCardContext'
 import { id } from "postcss-selector-parser";
 
@@ -10,15 +10,17 @@ import { id } from "postcss-selector-parser";
 function WeddingForm() {
     const [newWedding, setNewWedding] = useState({ 
         couple_name: "", 
-        user_location: "", 
         wedding_theme: "", 
+        wedding_location: "", 
         vendors: "" 
     })
     const { activeCard, setActiveCard} = useContext(ActiveCardContext)
 
 
+
     function handleChange(event) {
         const updateWedding = {...newWedding, [event.target.name]: event.target.value};
+        console.log("update wedding", updateWedding)
         setNewWedding(updateWedding);
     }
 
@@ -56,8 +58,8 @@ function WeddingForm() {
                     <input 
                         placeholder='Couple Names' 
                         type="text"
-                        name="couple"
-                        value={newWedding.couple}
+                        name="couple_name"
+                        value={newWedding.couple_name}
                         onChange={handleChange}
                     />
                 </Form.Field>
@@ -66,8 +68,8 @@ function WeddingForm() {
                     <input 
                         placeholder='Location' 
                         type="text"
-                        name="location"
-                        value={newWedding.user_location}
+                        name="wedding_location"
+                        value={newWedding.wedding_location}
                         onChange={handleChange}
                     />
                 </Form.Field>
@@ -76,7 +78,7 @@ function WeddingForm() {
                     <input
                         placeholder='Theme'
                         type="text"
-                        name="theme"
+                        name="wedding_theme"
                         value={newWedding.wedding_theme}
                         onChange={handleChange}
 
