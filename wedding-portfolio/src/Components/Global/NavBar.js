@@ -1,38 +1,80 @@
 import React, { useContext } from "react";
 import { GreetingContext } from "../../Contexts/greetingContext";
 import { NavLink } from "react-router-dom";
+import { RouteContext } from '../../Contexts/routeContext'
+import { Menu, Button, Header, Segment } from 'semantic-ui-react'
 
 export const NavBar = props => {
+  const routeProps = useContext(RouteContext)
   const { greeting, setGreeting } = useContext(GreetingContext);
+
   console.log("greeting", greeting);
 
   const logout = () => {
     console.log("logout props", props.routeProps);
-    props.routeProps.history.push("/");
+    routeProps.routeProps.history.push("/");
     localStorage.clear();
-    setGreeting("Hi!");
+    setGreeting("See you next time!");
   };
 
-  if (localStorage.getItem("token")) {
-    return (
-      <nav>
-        <h3>{greeting}</h3>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Register</NavLink>
-        <NavLink to="/">Guest View</NavLink>
-        <NavLink to="/portfolioView">Portfolio View</NavLink>
-        <NavLink to="/weddingForm">Add Wedding</NavLink>
-        <button onClick={logout}>Logout</button>
-      </nav>
-    );
-  } else {
-    return (
-      <nav>
-        <h3>{greeting}</h3>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Register</NavLink>
-        <NavLink to="/">Guest View</NavLink>
-      </nav>
-    );
+  const portfolioAccess = () => {
+    if (localStorage.getItem("token")) {
+      return (
+        <Menu>
+          <Menu.Item 
+            header as={NavLink} 
+            exact to="/weddingForm" 
+            activeClassName="active"
+            >
+            Add Wedding
+          </Menu.Item>
+
+          <Menu.Item 
+            header as={NavLink} 
+            exact to="/portfolioView" 
+            activeClassName="active"
+            >
+            Portfolio
+          </Menu.Item>
+
+          <Button onClick={logout}>Logout</Button>
+        </Menu>
+
+      )
+      }
   }
-};
+
+  return (
+    <div>
+    <Header as='h2' attached='top'>
+      {greeting}
+    </Header>
+    <Segment attached>
+      <Menu>
+        <Menu.Item 
+          header as={NavLink} 
+          exact to="/" 
+          activeClassName="active"
+          >
+          GuestView
+        </Menu.Item>
+        <Menu.Item 
+          header as={NavLink} 
+          exact to="/login" 
+          activeClassName="active"
+          >
+          Login
+        </Menu.Item>
+        <Menu.Item 
+          header as={NavLink} 
+          exact to="/register" 
+          activeClassName="active"
+          >
+          Sign Up
+        </Menu.Item>
+        {portfolioAccess()}
+      </Menu>
+    </Segment>
+  </div>
+  )
+}

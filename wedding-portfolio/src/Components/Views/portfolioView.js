@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js";
-import axios from 'axios' 
+
 
 
 
@@ -28,7 +28,9 @@ useEffect(() => {
        {/* Webstie main content */}
     <article> 
          <div> 
-            <WeddingCard /> 
+           { portFolioView.map(watch => {
+               return <WeddingCard key={watch.id} watch={ watch } /> 
+           })} 
          </div>
     </article>
 </section>

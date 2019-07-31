@@ -1,32 +1,51 @@
 import React, {useState, useEffect} from "react";
 import { Form, Button } from 'semantic-ui-react'
+import { axiosWithAuth } from "../../utilities/axiosWithAuth"
+import { ActiveCardContext } from '../../Contexts/activeCardContext'
+import { id } from "postcss-selector-parser";
+
 
 
 
 function WeddingForm() {
-    const [newWedding, setNewWedding] = useState({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" })
-    
+    const [newWedding, setNewWedding] = useState({ 
+        couple_name: "", 
+        user_location: "", 
+        wedding_theme: "", 
+        vendors: "" 
+    })
+    const { activeCard, setActiveCard} = useContext(ActiveCardContext)
+
 
     function handleChange(event) {
-        // console.log(event.target.name);
-        // console.log(event.target.value);
         const updateWedding = {...newWedding, [event.target.name]: event.target.value};
         setNewWedding(updateWedding);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        if (weddingToEdit) {
-            //on submit with "put" the edited object onto the weddings database
+        if (activeCard) {
+            console.log(activeCard)
+            setNewWedding(...activeCard)
+            axiosWithAuth()
+                    //A PUT request to this endpoint where ":id" is replaced by the post ID, will allow the logged in user to edit their post
+                .put(`https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/${activeCard.id}`)
+                .then(response => console.log(response))
+                .catch(error => console.log("Error", error))
         } else {
             //on submit will "post" the new wedding onto the weddings database
+            // https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts
+            axiosWithAuth()
+                .post("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts", newWedding)
+                .then(response => console.log(response))
+                .catch(error => console.log("Error", error))
         } 
         setNewWedding({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" });  
     }
 
-    useEffect(() => {
-        setNewWedding(props.weddingToEdit)
-    },[props.weddingToEdit])
+    // useEffect(() => {
+    //     setNewWedding(props.weddingToEdit)
+    // },[props.weddingToEdit])
 
     return (
         <div>
@@ -71,6 +90,7 @@ function WeddingForm() {
                         name="vendors"
                         value={newWedding.vendors}
                         onChange={handleChange}
+
                     />
                 </Form.Field>
                 <Button type='submit'>Submit</Button>

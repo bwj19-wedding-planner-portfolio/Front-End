@@ -2,6 +2,8 @@ import React from "react";
 import { Card, Image } from "semantic-ui-react";
 
 function SingleWedding(props) {
+  // const [singleWedding, setSingleWedding] = useState()
+
   const {
     photo,
     couple_name,
