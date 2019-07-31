@@ -27,8 +27,8 @@ export const Login = (props) => {
         // console.log("loggedIn State", loggedIn);
         console.log("response", res)
         localStorage.setItem('token', res.data.token);
-        setGreeting(res.data.message);
-        props.history.push("/");
+        setGreeting(res.data.username);
+        props.history.push("/portfolioView");
       })
       .catch(err => {
         // setIsLoading(false);
