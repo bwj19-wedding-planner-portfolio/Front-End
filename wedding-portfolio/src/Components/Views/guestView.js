@@ -9,8 +9,6 @@ function GuestView() {
 
   const [categories, setCategories] = useState({
     wedding_theme: "",
-    // planner: "",
-    // location: ""
   });
 
   useEffect(() => {
@@ -44,8 +42,6 @@ function GuestView() {
     .includes(categories.wedding_theme.toLowerCase())
 ); 
 
-//   console.log("FILTERED", filterPlanner);
-
   return (
     <section>
       {/* drop down elements */}
@@ -58,23 +54,6 @@ function GuestView() {
             name="wedding_theme"
             onChange={changeHandler}
           />
-
-          {/* <label> Wedding Theme </label>
-          <input
-            type="text"
-            placeholder="enter preferred theme"
-            name="wedding_theme"
-            onChange={changeHandler}
-          />
-
-          <label> Wedding Location </label>
-          <input
-            type="text"
-            placeholder="enter wedding location"
-            name="location"
-            onChange={changeHandler}
-          />
-          <button type="submit"> Search </button> */}
         </form>
       </div>
       {/* Website main content */}
