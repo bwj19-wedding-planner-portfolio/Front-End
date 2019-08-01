@@ -24,22 +24,28 @@ function WeddingCard(props) {
     function isLoggedIn() {
         if (localStorage.getItem('token')) {
             return(
+            <Card.Content extra style={{backgroundColor: "#DCB5F9"}}>
                 <div>
-                <Button onClick={() => grabWedding(props.watch)}>
-                    Edit
-                </Button> 
-                <Button onClick={() => deleteWedding(props.watch)}>
-                    Delete
-                </Button>
+                    <Button onClick={() => grabWedding(props.watch)}>
+                        Edit
+                    </Button> 
+                    <Button onClick={() => deleteWedding(props.watch)}>
+                        Delete
+                    </Button>
                 </div>
+            </Card.Content>
             )
         } else {
             return ( 
-                <div>
-                    <Link to={`/singleWedding/${id}`}> 
-                        More Info 
-                    </Link>
-                </div>
+                
+                <Card.Content extra style={{backgroundColor: "#97D1FD"}}>
+                    <div>
+                        <Link to={`/singleWedding/${id}`}> 
+                            More Info 
+                        </Link>
+                    </div>
+                </Card.Content>
+            
             )
         }
     }
@@ -71,7 +77,7 @@ function WeddingCard(props) {
     }
 
     const plannerColor = "#DCB5F9"
-    const guestColor = "97D1FD"
+    const guestColor = "#97D1FD"
     
 
     return (
@@ -80,19 +86,13 @@ function WeddingCard(props) {
                 <Card.Content>
                     <Card.Header className="coupleName">{couple_name}</Card.Header>
                     <Card.Meta>
-                        <span className='details'>Theme: {wedding_theme}</span>
+                        <span className="date">Planner: {planner}</span>
                     </Card.Meta>
-                    <Card.Meta>
-                        <span className='details'>Planner: {planner}</span>
-                    </Card.Meta>
-                    <Card.Meta>
-                        <span className='details'>Location: {location}</span>
-                    </Card.Meta>
+                    <Card.Description>Theme: {wedding_theme}</Card.Description>
+                    <Card.Description>Location: {location}</Card.Description>
                  
                 </Card.Content>
-                <Card.Content extra style={{backgroundColor: "#DCB5F9"}}>
                     {isLoggedIn()}
-                </Card.Content>
             </Card>            
     )
 };
