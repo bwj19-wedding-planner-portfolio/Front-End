@@ -13,8 +13,11 @@ function SingleWedding(props) {
     vendors
   } = props;
 
+  console.log("single wedding props", props)
+
   return (
     <div>
+      singlewedding
       <Card>
         <Image src={photo} wrapped ui={false} atl="Wedding photo" />
         <Card.Content>
