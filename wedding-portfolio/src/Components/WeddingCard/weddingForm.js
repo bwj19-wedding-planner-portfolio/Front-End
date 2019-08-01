@@ -47,7 +47,7 @@ function WeddingForm() {
                 .then(response => console.log(response))
                 .catch(error => console.log("Error", error))
         } 
-        setNewWedding({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" });  
+        setNewWedding({ couple_name: "", wedding_theme: "", wedding_date: "", photo: "", location: "", planner: "", vendors: "" });  
     }
 
     // useEffect(() => {

@@ -35,29 +35,24 @@ function WeddingCard(props) {
         } else {
             return ( 
                 <div>
-
-                {/* {console.log(props)} */}
-                <Link to={`/singleWedding/${id}`}>More Info</Link>
-                {/* <Route 
-                    path="/singleWedding" 
-                    // component={SingleWedding}
-                    render={props => <SingleWedding {...props} watch={props.watch}/>}
-                />
-                <Route path="/singleWedding" component={WeddingForm}/> */}
+                    <Link to={`/singleWedding/${id}`}> 
+                        More Info 
+                    </Link>
                 </div>
             )
         }
     }
 
 
-    //const [weddingToEdit, setWeddingToEdit] = useState({}) ---> add to where global state lives or the portfolio view?
+    // adds function to the edit button
     function grabWedding(wedding) { 
         setActiveCard(wedding);
         console.log(wedding);
         routeProps.routeProps.history.push("/weddingForm")
     }
 
-    // add function to the delete button 
+
+    // adds function to the delete button 
     function deleteWedding(wedding) {
         console.log(wedding);
         axiosWithAuth()
