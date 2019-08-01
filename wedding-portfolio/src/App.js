@@ -13,7 +13,7 @@ import { Login } from "./Components/LoginForms/login";
 import { NavBar } from "./Components/Global/NavBar";
 import { Header } from "./Components/Global/Header";
 import WeddingForm from "./Components/WeddingCard/weddingForm";
-// import SingleWedding from "./Components/WeddingCard/SingleWedding";
+import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
 //Utilities//
 import { GreetingContext } from "./Contexts/greetingContext";
@@ -48,7 +48,7 @@ function App(props) {
             {/* Private Routes */}
             <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
             <PrivateRoute exact path="/weddingForm" component={WeddingForm} />
-            {/* <PrivateRoute exact path="/singleWedding" component={SingleWedding} /> */}
+            <Route exact path="/singleWedding/:id" render={props => <SingleWedding {...props} watch={props.history}/>} />
 
           </div>
         </RouteContext.Provider>
