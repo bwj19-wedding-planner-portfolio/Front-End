@@ -66,7 +66,7 @@ function WeddingCard(props) {
     }
 
     return (
-             <Card>
+             <Card raised color="pink">
                 <Image src={photo} wrapped ui={false} atl="Wedding photo" />
                 <Card.Content>
                     <Card.Header>{couple_name}</Card.Header>
