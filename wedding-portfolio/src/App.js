@@ -23,7 +23,7 @@ import { PrivateRoute } from "./Utilities/PrivateRoute";
 
 function App(props) {
   const routeProps = props
-  console.log("app props", props)
+  // console.log("app props", props)
 
   const [greeting, setGreeting] = useState("Hi!")
   const [activeCard, setActiveCard] = useState(null)

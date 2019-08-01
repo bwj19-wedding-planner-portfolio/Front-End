@@ -8,18 +8,21 @@ import { id } from "postcss-selector-parser";
 
 
 function WeddingForm() {
-    const [newWedding, setNewWedding] = useState({ 
+    const { activeCard, setActiveCard} = useContext(ActiveCardContext)
+
+    const [newWedding, setNewWedding] = useState(activeCard || { 
         couple_name: "",
         wedding_theme: "",
         wedding_date: "",
         photo: "",
         location: "",
         planner: "",
-        vendors: ""
+        vendors: "",
     })
-    const { activeCard, setActiveCard} = useContext(ActiveCardContext)
+    console.log("activeCard", activeCard)
+    // console.log(activeCard.watch.couple_name)
 
-
+    
 
     function handleChange(event) {
         const updateWedding = {...newWedding, [event.target.name]: event.target.value};
@@ -30,7 +33,8 @@ function WeddingForm() {
     function handleSubmit(event) {
         event.preventDefault();
         if (activeCard) {
-            console.log("activeCard", activeCard)
+            console.log(activeCard)
+            ///WIP is there/what is the active card?///
             // setNewWedding(...activeCard)
             axiosWithAuth()
                     //A PUT request to this endpoint where ":id" is replaced by the post ID, will allow the logged in user to edit their post
@@ -38,16 +42,21 @@ function WeddingForm() {
                 .then(response => console.log(response))
                 .catch(error => console.log("Error", error))
         } else {
-            //on submit will "post" the new wedding onto the weddings database
-            // https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts
-            console.log("newWedding", newWedding)
-
             axiosWithAuth()
                 .post("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts", newWedding)
-                .then(response => console.log(response))
+                .then(response => console.log("new wedding response", response))
                 .catch(error => console.log("Error", error))
         } 
-        setNewWedding({ couple_name: "", user_location: "", wedding_theme: "", vendors: "" });  
+        setNewWedding({         
+            couple_name: "",
+            wedding_theme: "",
+            wedding_date: "",
+            photo: "",
+            location: "",
+            planner: "",
+            vendors: ""
+        });
+        // setActiveCard(null)
     }
 
     // useEffect(() => {
