@@ -120,5 +120,5 @@ Full Repo:
 https://github.com/bwj19-wedding-planner-portfolio
 
 #Project status
-This project was completed for a Lambda School build week July 2019. There may be updates to the application periodically.
+This project was completed for a Lambda School build week July 2019. There may be updates to the application periodically
 
