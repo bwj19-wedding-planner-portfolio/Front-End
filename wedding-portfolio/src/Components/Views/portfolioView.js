@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js";
 import { Card } from "semantic-ui-react";
-
+import { Margin } from "./styling"; 
 
 
 // GET posts by logged in user through AxiosWithAuth//
@@ -36,17 +36,19 @@ if(!portFolioView || portFolioView.length === 0) {
 } else {
     console.log("portFolioView", portFolioView)
     return(
-
+        <Margin> 
 <section> 
        {/* Webstie main content */}
+       <Margin> </Margin>
     <article> 
-        <Card.Group className='cardGroup' doubling centered itemsPerRow={4}>
+        <Card.Group className='cardGroup' doubling centered itemsPerRow={5}>
            { portFolioView.map(watch => {
                return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
            })} 
         </Card.Group>
     </article>
 </section>
+    </Margin>
     ); 
 }
 }
