@@ -48,6 +48,6 @@ if(!portFolioView || portFolioView.length === 0) {
     </article>
 </section>
     ); 
-}
+}}
 
 export default PortfolioView; 
