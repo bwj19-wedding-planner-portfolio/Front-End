@@ -1,10 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import * as Yup from "yup";
-import { GreetingContext } from "../../Contexts/greetingContext";
 
 export const Register = props => {
-  // const { setGreeting } = useContext(GreetingContext);
   const [ isLoading, setIsLoading ] = useState(false)
   const [ isError, setIsError ] = useState(false)
 
