@@ -18,40 +18,40 @@ function WeddingCard(props) {
 
     const { activeCard, setActiveCard} = useContext(ActiveCardContext)
 
-    const {id, photo, couple_name, firstName, user_location, wedding_theme} = props.watch
+    const {id, photo, couple_name, planner, location, wedding_theme} = props.watch
     
 
     function isLoggedIn() {
         if (localStorage.getItem('token')) {
             return(
+            <Card.Content extra style={{backgroundColor: "#DCB5F9"}}>
                 <div>
-                <Button onClick={() => grabWedding(props.watch)}>
-                    Edit
-                </Button> 
-                <Button onClick={() => deleteWedding(props.watch)}>
-                    Delete
-                </Button>
+                    <Button onClick={() => grabWedding(props.watch)}>
+                        Edit
+                    </Button> 
+                    <Button onClick={() => deleteWedding(props.watch)}>
+                        Delete
+                    </Button>
                 </div>
+            </Card.Content>
             )
         } else {
             return ( 
-                <div>
-
-                {/* {console.log(props)} */}
-                <Link to={`/singleWedding/${id}`}>More Info</Link>
-                {/* <Route 
-                    path="/singleWedding" 
-                    // component={SingleWedding}
-                    render={props => <SingleWedding {...props} watch={props.watch}/>}
-                />
-                <Route path="/singleWedding" component={WeddingForm}/> */}
-                </div>
+                
+                <Card.Content extra style={{backgroundColor: "#97D1FD"}}>
+                    <div>
+                        <Link to={`/singleWedding/${id}`}> 
+                            More Info 
+                        </Link>
+                    </div>
+                </Card.Content>
+            
             )
         }
     }
 
 
-    //const [weddingToEdit, setWeddingToEdit] = useState({}) ---> add to where global state lives or the portfolio view?
+    // adds function to the edit button
     function grabWedding(wedding) { 
         setActiveCard(wedding);
         console.log(wedding);
@@ -60,7 +60,8 @@ function WeddingCard(props) {
     // console.log(activeCard);
 
 
-    // add function to the delete button 
+
+    // adds function to the delete button 
     function deleteWedding(wedding) {
         console.log(wedding);
         axiosWithAuth()
@@ -75,26 +76,23 @@ function WeddingCard(props) {
             })
     }
 
+    const plannerColor = "#DCB5F9"
+    const guestColor = "#97D1FD"
+    
 
     return (
-             <Card>
+             <Card raised >
                 <Image src={photo} wrapped ui={false} atl="Wedding photo" />
                 <Card.Content>
-                    <Card.Header>{couple_name}</Card.Header>
+                    <Card.Header className="coupleName">{couple_name}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>Planner: {firstName}</span>
+                        <span className="date">Planner: {planner}</span>
                     </Card.Meta>
-                    <Card.Meta>
-                        <span className='date'>Location: {user_location}</span>
-                    </Card.Meta>
-                    <Card.Meta>
-                        <span className='date'>Theme: {wedding_theme}</span>
-                    </Card.Meta>
+                    <Card.Description>Theme: {wedding_theme}</Card.Description>
+                    <Card.Description>Location: {location}</Card.Description>
                  
                 </Card.Content>
-                <Card.Content extra>
                     {isLoggedIn()}
-                </Card.Content>
             </Card>            
     )
 };

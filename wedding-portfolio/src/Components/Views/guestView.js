@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WeddingCard from "../WeddingCard/weddingCard";
 import axios from "axios";
-import { Item } from "semantic-ui-react";
+import { Item, Card } from "semantic-ui-react";
 
 function GuestView() {
   const [guestView, setGuestView] = useState([]);
@@ -59,11 +59,11 @@ function GuestView() {
       </div>
       {/* Website main content */}
       <article>
-        <div>
+        <Card.Group className='cardGroup' doubling centered itemsPerRow={4}>
           {filterTheme.map(view => {
             return <WeddingCard key={view.id} watch={view} />;
           })}
-        </div>
+        </Card.Group>
       </article>
     </section>
   );

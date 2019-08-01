@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js";
-
+import { Card } from "semantic-ui-react";
 
 
 
@@ -36,19 +36,18 @@ if(!portFolioView || portFolioView.length === 0) {
 } else {
     console.log("portFolioView", portFolioView)
     return(
-        <section> 
-               {/* Webstie main content */}
-            <article> 
-                 <div> 
-                   { portFolioView.map(watch => {
-                       return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
-                   })} 
-                 </div>
-            </article>
-        </section>
-            ); 
-}
 
+<section> 
+       {/* Webstie main content */}
+    <article> 
+        <Card.Group className='cardGroup' doubling centered itemsPerRow={4}>
+           { portFolioView.map(watch => {
+               return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
+           })} 
+        </Card.Group>
+    </article>
+</section>
+    ); 
 }
 
 export default PortfolioView; 
