@@ -29,7 +29,8 @@ function SingleWedding(props) {
     planner,
     user_location,
     wedding_theme,
-    vendors
+    vendors,
+    wedding_date,
   } = moreInfo;
 
 
@@ -45,6 +46,7 @@ function SingleWedding(props) {
           </Card.Meta>
           <Card.Description>Location: {user_location}</Card.Description>
           <Card.Description>Theme: {wedding_theme}</Card.Description>
+          <Card.Description>Date: {wedding_date}</Card.Description>
           <Card.Description>Vendors: {vendors}</Card.Description>
         </Card.Content>
         <Card.Content extra />
