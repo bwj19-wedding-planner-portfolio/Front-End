@@ -51,16 +51,37 @@ function WeddingForm() {
 
     }
 
+
+    function formHeader() {
+        if (activeCard) {
+            return(
+                <div className="formHeader">
+                    <h2> Edit Your Wedding Post </h2>
+                    <p>Make changes to your wedding on the this form and click submit.</p>
+                </div>
+            )
+        } else {
+            return(
+                <div className="formHeader">
+                    <h2> Create a New Wedding Post </h2>
+                    <p>Fill in this form to create a new wedding on your portfolio. 
+                        Use the link of a photo hosted elsewhere in the 'photo' field.</p>
+                </div>
+            )
+        }
+    }
+
+
     // useEffect(() => {
     //     setNewWedding(props.weddingToEdit)
     // },[props.weddingToEdit])
 
     return (
-        <div>
+        <div className="weddingForm">
+            {formHeader()}
             <Form onSubmit={(event) => handleSubmit(event)}>
-                <legend>Wedding Form</legend>
                 <Form.Field>
-                    <label>Couple Names</label>
+                    <label>Couple's Names</label>
                     <input 
                         placeholder='Couple Names' 
                         type="text"
@@ -133,7 +154,7 @@ function WeddingForm() {
 
                     />
                 </Form.Field>
-                <Button type='submit'>Submit</Button>
+                <Button type='submit' floated='right' color="#FA80AF">Submit</Button>
             </Form>
         </div>
     )

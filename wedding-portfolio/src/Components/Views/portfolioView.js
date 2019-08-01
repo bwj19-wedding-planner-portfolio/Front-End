@@ -27,7 +27,7 @@ useEffect(() => {
 <section> 
        {/* Webstie main content */}
     <article> 
-        <Card.Group centered itemsPerRow={4}>
+        <Card.Group className='cardGroup' doubling centered itemsPerRow={4}>
            { portFolioView.map(watch => {
                return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
            })} 
