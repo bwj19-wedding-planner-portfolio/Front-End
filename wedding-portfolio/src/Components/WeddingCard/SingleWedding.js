@@ -10,7 +10,7 @@ function SingleWedding(props) {
           .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
           .then(response => {
             console.log("singlewedding get", response.data);
-            setMoreInfo(response);
+            setMoreInfo(response.data);
           })
           .catch(error => {
             console.log("Error", error);

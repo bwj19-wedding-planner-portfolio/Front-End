@@ -43,13 +43,13 @@ function App(props) {
             <Route exact path="/" component={GuestView} />
             <Route exact path="/login" component={Login}/>
             <Route exact path="/register" component={Register}/>
-
+            <Route exact path="/singleWedding/:id" component={SingleWedding} /> 
 
             {/* Private Routes */}
             <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
             <PrivateRoute exact path="/weddingForm" component={WeddingForm} />
-            <Route exact path="/singleWedding/:id" render={props => <SingleWedding {...props} watch={props.history}/>} />
-
+            {/* <Route exact path="/singleWedding/:id" render={props => <SingleWedding {...props} watch={props.history}/>} /> */}
+            
           </div>
         </RouteContext.Provider>
       </ActiveCardContext.Provider>
