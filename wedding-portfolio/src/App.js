@@ -25,11 +25,11 @@ function App(props) {
   const routeProps = props
   // console.log("app props", props)
 
-  const [greeting, setGreeting] = useState("Hi!")
+  // const [greeting, setGreeting] = useState("Hi There!")
   const [activeCard, setActiveCard] = useState(null)
   
   return (
-    <GreetingContext.Provider value={{greeting, setGreeting}}>
+    // <GreetingContext.Provider value={{greeting, setGreeting}}>
       <ActiveCardContext.Provider value={{activeCard, setActiveCard}}>
         <RouteContext.Provider value={{routeProps}}>
 
@@ -53,7 +53,7 @@ function App(props) {
           </div>
         </RouteContext.Provider>
       </ActiveCardContext.Provider>
-    </GreetingContext.Provider>
+    // </GreetingContext.Provider>
 
   )
 }

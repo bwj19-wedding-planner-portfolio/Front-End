@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { GreetingContext } from "../../Contexts/greetingContext";
 
 export const Register = props => {
-  const { setGreeting } = useContext(GreetingContext);
+  // const { setGreeting } = useContext(GreetingContext);
 
   const [userID, setUserID] = useState({
     firstName: "",
@@ -44,8 +44,8 @@ export const Register = props => {
         // console.log("loggedIn State", loggedIn);
         console.log("RESPONSE", res);
         localStorage.setItem("token", res.data.token);
-        setGreeting(res.data.username);
-        props.history.push("/");
+        // setGreeting(res.data.username);
+        props.history.push("/portfolioView");
       })
       .catch(err => {
         // setIsLoading(false);
