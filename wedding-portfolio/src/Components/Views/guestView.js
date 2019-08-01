@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WeddingCard from "../WeddingCard/weddingCard";
 import axios from "axios";
-import { Item, Card, Input, Icon } from "semantic-ui-react";
+import { Card, Input, Icon } from "semantic-ui-react";
 import { Margin } from "./styling"; 
 
 function GuestView() {

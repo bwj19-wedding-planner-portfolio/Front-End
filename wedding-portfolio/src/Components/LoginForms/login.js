@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { GreetingContext } from "../../Contexts/greetingContext"
 
 export const Login = (props) => {
 
   const [ isLoading, setIsLoading ] = useState(false)
   const [ isError, setIsError ] = useState(false)
-  // const { setGreeting } = useContext(GreetingContext);
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
