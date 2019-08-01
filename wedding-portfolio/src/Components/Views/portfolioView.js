@@ -29,7 +29,7 @@ useEffect(() => {
     <article> 
          <div> 
            { portFolioView.map(watch => {
-               return <WeddingCard key={watch.id} watch={ watch } /> 
+               return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
            })} 
          </div>
     </article>

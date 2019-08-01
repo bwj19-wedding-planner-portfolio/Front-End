@@ -66,7 +66,9 @@ function WeddingCard(props) {
         axiosWithAuth()
             .delete(`https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/${id}`)
             .then(res => {
-                console.log(res)
+                props.setPortFolioView(props.portFolioView.filter((post) => {
+                    return post.id !== id
+                }))
             })
             .catch(err => {
                 console.log("error", err)
