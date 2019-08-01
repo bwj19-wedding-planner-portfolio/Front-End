@@ -24,3 +24,12 @@ h2 {
 .singleView {
   margin: 50px 20%;
 }
+
+.weddingForm {
+  margin: 100px 30%;
+  text-align: left;
+}
+
+.formHeader {
+  margin: 25px auto;
+}
