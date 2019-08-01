@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
 import { PrivateRoute } from "../../Utilities/PrivateRoute";
 import { ActiveCardContext } from '../../Contexts/activeCardContext'
@@ -10,7 +10,7 @@ import SingleWedding from "./SingleWedding.js"
 
 
 function WeddingCard(props) {
-    console.log("wedding card props", props)
+    // console.log("wedding card props", props)
 
     const routeProps = useContext(RouteContext)
 
@@ -23,10 +23,10 @@ function WeddingCard(props) {
         if (localStorage.getItem('token')) {
             return(
                 <div>
-                <Button onClick={() => grabWedding(props)}>
+                <Button onClick={() => grabWedding(props.watch)}>
                     Edit
                 </Button> 
-                <Button onClick={() => deleteWedding(props)}>
+                <Button onClick={() => deleteWedding(props.watch)}>
                     Delete
                 </Button>
                 </div>
@@ -55,6 +55,8 @@ function WeddingCard(props) {
         console.log(wedding);
         routeProps.routeProps.history.push("/weddingForm")
     }
+    // console.log(activeCard);
+
 
     // add function to the delete button 
     function deleteWedding(wedding) {
@@ -68,6 +70,7 @@ function WeddingCard(props) {
                 console.log("error", err)
             })
     }
+
 
     return (
              <Card>

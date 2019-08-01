@@ -20,7 +20,7 @@ function GuestView() {
       .then(event => {
         console.log("this is a list", event);
         setGuestView(event.data);
-      })
+      })                             
       .catch(error => {
         console.log("ERROR", error);
       });
@@ -38,14 +38,14 @@ function GuestView() {
     event.preventDefault();
   };
 
-  /** FILTER ALL THE DATA IN ONE INPUT (Wedding planner) */
-  const filterPlanner = guestView.filter(guest =>
-    guest.description
-      .toLowerCase()
-      .includes(categories.description.toLowerCase())
-  );
+  // /** FILTER ALL THE DATA IN ONE INPUT (Wedding planner) */
+  // const filterPlanner = guestView.filter(guest =>
+  //   guest.description
+  //     .toLowerCase()
+  //     .includes(categories.description.toLowerCase())
+  // );
 
-  console.log("FILTERED", filterPlanner);
+  // console.log("FILTERED", filterPlanner);
 
   return (
     <section>
