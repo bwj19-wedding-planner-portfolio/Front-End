@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { RouteContext } from '../../Contexts/routeContext'
-import { Menu, Button, Segment } from 'semantic-ui-react'
+import { Menu, Segment } from 'semantic-ui-react'
 
 export const NavBar = props => {
   const routeProps = useContext(RouteContext)
@@ -17,19 +17,20 @@ export const NavBar = props => {
       return (
         <>
           <Menu.Item 
+            name="Portfolio"
             header as={NavLink} 
             exact to="/portfolioView" 
             activeClassName="active"
+            style={{backgroundColor: "#97D1FD"}}
           >
-            Portfolio
           </Menu.Item>
 
           <Menu.Item 
+            name="Add Wedding"
             header as={NavLink} 
             exact to="/weddingForm" 
             activeClassName="active"
           >
-            Add Weddings
           </Menu.Item>
 
           <Menu.Menu position="right">
@@ -75,7 +76,7 @@ export const NavBar = props => {
   return (
     <div>
     <Segment attached>
-      <Menu pointing >
+      <Menu >
         {portfolioAccess()}
       </Menu>
     </Segment>
