@@ -20,10 +20,7 @@ function WeddingForm() {
         planner: "",
         vendors: "",
     })
-    console.log("activeCard", activeCard)
-    // console.log(activeCard.watch.couple_name)
 
-    
 
     function handleChange(event) {
         const updateWedding = {...newWedding, [event.target.name]: event.target.value};
@@ -32,21 +29,18 @@ function WeddingForm() {
     }
 
     function handleSubmit(event) {
+        console.log("handleSubmit activeCard", activeCard)
         event.preventDefault();
         setIsLoading(true)
-        console.log("handle submit loading",isLoading)
 
         if (activeCard) {
-            console.log(activeCard)
             // /WIP is there/what is the active card?///
-            setNewWedding(...activeCard)
+            setNewWedding({...activeCard})
             axiosWithAuth()
                     //A PUT request to this endpoint where ":id" is replaced by the post ID, will allow the logged in user to edit their post
                 .put(`https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/${newWedding.id}`, newWedding)
                 .then(response => 
-                    console.log("active card response", response),
                     setIsLoading(false),
-                    console.log("isLoading in call", isLoading)
                     )
                 .catch(error => console.log("Error", error))
         } else {
