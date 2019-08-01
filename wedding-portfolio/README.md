@@ -1,68 +1,124 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Front-End-Wedding-Planner-Portfolio
 
-## Available Scripts
+# Description
 
-In the project directory, you can run:
+This React App allows a Wedding Planner to showcase their work to their perspective clients. The wedding planner end user can Sign Up for their own portfolio and use a template to post information about the weddings they have planned.  While logged in, the wedding planner can create new posts, edit exsisting posts, and delete posts from their portfolio. A secondary feature of this app allows clients to browse all weddings that have been planned by all Wedding Planners who currently have an account.  The client end user can filter the posts by theme.
 
-### `npm start`
+# Getting Started
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To use the App as a client end user follow the link and use the search feature to filter through the listed weddings by theme. To see more details about a wedding, click the more info link directly under the specific post you wish to see.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+To use the App as a wedding planner end user follow the link, click "Sign Up" on the navigation menu, and fill out the form to create a portfolio. This will redirect you to the portfolio view. You will find it empty until a post is created.  
 
-### `npm test`
+To create a new post click the "Add Wedding" button on the navigation menu and fill out form.  Submitting this form will redirect you to the portfolio view where you will now see your newly created wedding. Now that you have a wedding in the portfolio you can either edit the post or delete it by clicking the respective button directly under the post you wish to manage. 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To edit a post click the "Edit" button on the navigation menu. Doing this will redirect you to the edit form with the post's information pre-populated in the form fields.  Make the necessary changes and click the submit button.  This will update your post and redirect you to the portfolio view where you will find your updated post.  
 
-### `npm run build`
+To delete a post, click the delete button and it will reload the portfolio view with the delete post removed.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Prerequisites
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Start development by creating a react app using:
+create-react-app app-name
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All of the below dependencies can be installed using:
+yarn install
 
-### `npm run eject`
+# Installation
+This project was created using yarn and designed for react client side. Other dependencies include:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+"dependencies": {
+    "axios": "^0.19.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.3",
+    "yup": "^0.27.0"
+  }
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Examples of Tables
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Register looks like this:
+    "firstName": "Jeff",
+    "lastName": "Oliver",
+    "username": "jefftest",
+    "password": "test",
+    "email": "test@test.com",
+    "location": "test"
 
-## Learn More
+Posts look like this:
+     couple_name: "Sumiko & Ryosuke's Wedding",
+     wedding_theme: "Modern",
+     wedding_date: "2018-07-23",
+     photo: "https://images.unsplash.com/photo-1522333323-32663f141b57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&           auto=format&fit=crop&w=675&q=80",
+     location: "Boston, MA",
+     description: "Candace Lindsale", ---> This is the Wedding Planner's name
+     vendors: "test",
+     user_id: 2, --> this is the id of the Wedding Planner
+     firstName: "Jeff" --> The first name will be linked to whoever is logged in
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Endpoint Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+POST - Register a new user and provide a Web Token
+*** Requires a firstName, lastName, username, and password
 
-### Code Splitting
+https://bw19-wedding-planner-portfolio.herokuapp.com/api/auth/register
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+POST - Login a registered user. Also provides Web Token. 
+*** Requires username and password
 
-### Analyzing the Bundle Size
+https://bw19-wedding-planner-portfolio.herokuapp.com/api/auth/login
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+GET - Returns all posts/portfolios 
+*** Requires no login
 
-### Making a Progressive Web App
+https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+GET - Returns the post with the specific ID. (Replace ":id" with the id you want to look for) 
+*** Will only return if associated with logged in user
 
-### Advanced Configuration
+https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/:id
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+POST - Allows the logged in user to add a post or portfolio 
+*** Requires a couple_name
 
-### Deployment
+https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+PUT - Where ":id" is replaced by the post ID, will allow the logged in user to edit their post
 
-### `npm run build` fails to minify
+https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/:id
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+DELETE - Where ":id" is replaced by the post ID, will allow the logged in user to DELETE their post
+
+https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/:id
+
+
+# Support
+There is currently no active support for this app
+
+# Authors and acknowledgment
+
+UI Engineers: 
+Marketing Website 1 - Kyle Guerrero (https://github.com/AceMouty)
+https://stoic-varahamihira-cfb191.netlify.com/
+
+Marketing Website 2 - Min Huang (https://github.com/huangm96)
+https://stoic-goldstine-846998.netlify.com
+
+Front End Engineers: 
+Dennis Mercado(https://github.com/denmercs), 
+Noah Franco(https://github.com/noahfranco), 
+Desiree Morris(https://github.com/desiquinn)
+
+Advanced Front End Engineer: Laura Daugherty(https://github.com/laura-daugherty)
+Backend Engineer: Chris Carter(https://github.com/ChrisJCarter91)
+
+Full Repo:
+https://github.com/bwj19-wedding-planner-portfolio
+
+#Project status
+This project was completed for a Lambda School build week July 2019. There may be updates to the application periodically.
+
