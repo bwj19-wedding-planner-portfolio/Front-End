@@ -29,7 +29,7 @@ useEffect(() => {
     <article> 
         <Card.Group centered itemsPerRow={4}>
            { portFolioView.map(watch => {
-               return <WeddingCard key={watch.id} watch={ watch } /> 
+               return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
            })} 
         </Card.Group>
     </article>

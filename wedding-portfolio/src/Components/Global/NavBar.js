@@ -8,7 +8,7 @@ export const NavBar = props => {
   const routeProps = useContext(RouteContext)
   const { greeting, setGreeting } = useContext(GreetingContext);
 
-  console.log("greeting", greeting);
+  // console.log("greeting", greeting);
 
   const logout = () => {
     console.log("logout props", props.routeProps);
@@ -20,7 +20,7 @@ export const NavBar = props => {
   const portfolioAccess = () => {
     if (localStorage.getItem("token")) {
       return (
-        <Menu>
+        <>
           <Menu.Item 
             header as={NavLink} 
             exact to="/weddingForm" 
@@ -37,8 +37,8 @@ export const NavBar = props => {
             Portfolio
           </Menu.Item>
 
-          <Button onClick={logout}>Logout</Button>
-        </Menu>
+          <Button size='tiny' onClick={logout}>Logout</Button>
+        </>
 
       )
       }

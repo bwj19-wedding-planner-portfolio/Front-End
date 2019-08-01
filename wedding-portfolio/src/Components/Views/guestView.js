@@ -17,7 +17,7 @@ function GuestView() {
       .then(event => {
         console.log("this is a list", event);
         setGuestView(event.data);
-      })
+      })                             
       .catch(error => {
         console.log("ERROR", error);
       });
@@ -41,6 +41,7 @@ function GuestView() {
     .toLowerCase()
     .includes(categories.wedding_theme.toLowerCase())
 ); 
+
 
   return (
     <section>
