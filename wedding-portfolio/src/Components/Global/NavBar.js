@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { RouteContext } from '../../Contexts/routeContext'
-import { Menu, Button, Segment } from 'semantic-ui-react'
+import { Menu, Segment } from 'semantic-ui-react'
 
 export const NavBar = props => {
   const routeProps = useContext(RouteContext)
@@ -17,58 +17,67 @@ export const NavBar = props => {
       return (
         <>
           <Menu.Item 
+            name="Portfolio"
             header as={NavLink} 
             exact to="/portfolioView" 
             activeClassName="active"
-            >
-            Portfolio
+            style={{backgroundColor: "#97D1FD"}}
+          >
           </Menu.Item>
 
           <Menu.Item 
+            name="Add Wedding"
             header as={NavLink} 
             exact to="/weddingForm" 
             activeClassName="active"
-            >
-            Add Wedding
+          >
           </Menu.Item>
 
-          <Button size='tiny' onClick={logout}>Logout</Button>
+          <Menu.Menu position="right">
+            <Menu.Item
+              name="Logout"
+              onClick={logout}
+              />
+          </Menu.Menu>
         </>
       )
     } else {
       return (
-        <Menu.Item 
-        header as={NavLink} 
-        exact to="/" 
-        activeClassName="active"
-        >
-        GuestView
-      </Menu.Item>
+        <>
+          <Menu.Item 
+            header as={NavLink} 
+            exact to="/" 
+            activeClassName="active"
+          >
+            GuestView
+          </Menu.Item>
+          <Menu.Item 
+            header as={NavLink} 
+            exact to="/login" 
+            activeClassName="active"
+            
+          >
+            Login
+          </Menu.Item>
+          <Menu.Item 
+            header as={NavLink} 
+            exact to="/register" 
+            activeClassName="active"
+            >
+            Sign Up
+          </Menu.Item>
+        </>
       )
     }
   }
 
+  // const {color} = "#DCB5F9"
+
   return (
     <div>
     <Segment attached>
-      <Menu>
-        <Menu.Item 
-          header as={NavLink} 
-          exact to="/login" 
-          activeClassName="active"
-          >
-          Login
-        </Menu.Item>
-        <Menu.Item 
-          header as={NavLink} 
-          exact to="/register" 
-          activeClassName="active"
-          >
-          Sign Up
-        </Menu.Item>
+      <Menu >
         {portfolioAccess()}
-
-
       </Menu>
     </Segment>
   </div>
