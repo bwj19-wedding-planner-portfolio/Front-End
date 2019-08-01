@@ -1,13 +1,14 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useContext} from "react";
 import { Form, Button } from 'semantic-ui-react'
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth"
 import { ActiveCardContext } from '../../Contexts/activeCardContext'
-import { id } from "postcss-selector-parser";
 
 
 
 
 function WeddingForm() {
+    const [ isLoading, setIsLoading ] = useState(false)
+
     const { activeCard, setActiveCard} = useContext(ActiveCardContext)
 
     const [newWedding, setNewWedding] = useState(activeCard || { 
@@ -32,19 +33,30 @@ function WeddingForm() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setIsLoading(true)
+        console.log("handle submit loading",isLoading)
+
         if (activeCard) {
             console.log(activeCard)
-            ///WIP is there/what is the active card?///
-            // setNewWedding(...activeCard)
+            // /WIP is there/what is the active card?///
+            setNewWedding(...activeCard)
             axiosWithAuth()
                     //A PUT request to this endpoint where ":id" is replaced by the post ID, will allow the logged in user to edit their post
                 .put(`https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/${newWedding.id}`, newWedding)
-                .then(response => console.log("active card response", response))
+                .then(response => 
+                    console.log("active card response", response),
+                    setIsLoading(false),
+                    console.log("isLoading in call", isLoading)
+                    )
                 .catch(error => console.log("Error", error))
         } else {
+            console.log(isLoading)
             axiosWithAuth()
                 .post("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts", newWedding)
-                .then(response => console.log("new wedding response", response))
+                .then(response => 
+                    console.log("making Post call", isLoading),
+                    setIsLoading(false)
+                    )
                 .catch(error => console.log("Error", error))
         } 
         setNewWedding({         
@@ -81,14 +93,25 @@ function WeddingForm() {
         }
     }
 
+    function loading() {
+        console.log("inside loading state render function")
+        console.log("isLoading", isLoading)
+        if (isLoading) {
+            return (
+                <div className="formHeader">
+                    <h2>
+                        Adding your Post 
+                    </h2>
+                </div>
+            )
+        }
+    }
 
-    // useEffect(() => {
-    //     setNewWedding(props.weddingToEdit)
-    // },[props.weddingToEdit])
 
     return (
         <div className="weddingForm">
             {formHeader()}
+            {loading()}
             <Form onSubmit={(event) => handleSubmit(event)}>
                 <Form.Field>
                     <label>Couple's Names</label>

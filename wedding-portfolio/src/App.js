@@ -1,4 +1,4 @@
-//Dependancies//
+//Dependencies//
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 
@@ -16,16 +16,15 @@ import WeddingForm from "./Components/WeddingCard/weddingForm";
 import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
 //Utilities//
-import { GreetingContext } from "./Contexts/greetingContext";
-import { RouteContext } from "./Contexts/routeContext";
-import { ActiveCardContext } from "./Contexts/activeCardContext";
 import { PrivateRoute } from "./Utilities/PrivateRoute";
 
-function App(props) {
-  const routeProps = props
-  // console.log("app props", props)
+//Contexts//
+import { RouteContext } from "./Contexts/routeContext";
+import { ActiveCardContext } from "./Contexts/activeCardContext";
 
-  // const [greeting, setGreeting] = useState("Hi There!")
+function App(props) {
+  //App level Contexts//
+  const routeProps = props
   const [activeCard, setActiveCard] = useState(null)
   
   return (
@@ -53,60 +52,9 @@ function App(props) {
           </div>
         </RouteContext.Provider>
       </ActiveCardContext.Provider>
-    // </GreetingContext.Provider>
 
   )
 }
 
 export default App;
 
-// STATE (contexts to pass?):
-// 		weddings
-// 		user
-//    loggedIn
-
-// NAVBAR
-// simple log in or Log out
-// if Logged in has links to
-//   add
-//   log out
-//   guest view
-//   portfolio view
-// IF Logged OUT
-//logIn button
-
-// 	No Auth Routes:
-// 		“/Login” {Login}
-// 		“/Register” {Register}
-// 		“/Guest” {Guest}
-// 	With Auth Private Routes:
-// 		“/Portfolio”{Portfolio}
-// 		“/weddingForm”{weddingForm}
-
-// 	Logout:
-// 		logout=(event) => {
-// 		this.props.history.push(‘/guest’)
-// 		localStorage.clear()
-// 		}
-// 	checkLogin:
-// 		if user truths state => render Component otherwise send to “/login”
-
-//  user: {
-//   userId: “”,
-//    firstName: "",
-//    lastName: "",
-//    username: "",
-//    password: "",
-//    weddings: [
-//      {
-//        weddingId: "",
-//        plannerId: “”,
-//        date: “”,
-//        image: "",
-//        description: "",
-//        vendors: "",
-//        theme: "",
-//        location: ""
-//      }
-//    ]
-//  }
