@@ -1,0 +1,14 @@
+[build]
+  # Directory to change to before starting a build. 
+  # This is where we will look for package.json/.nvmrc/etc.
+  base = "wedding-portfolio/"
+  publish= "wedding-portfolio/build/"
+
+  # Directory with the serverless Lambda functions to deploy to AWS.
+  functions = "project/functions/"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status=200
+

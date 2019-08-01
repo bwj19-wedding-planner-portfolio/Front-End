@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import WeddingCard from "../WeddingCard/weddingCard";
 import axios from "axios";
-import { Item, Card } from "semantic-ui-react";
+import { Card, Input, Icon } from "semantic-ui-react";
+import { Margin } from "./styling"; 
 
 function GuestView() {
   const [guestView, setGuestView] = useState([]);
@@ -44,28 +45,30 @@ function GuestView() {
 
 
   return (
-    <section>
-      {/* drop down elements */}
+      <Margin> 
+      {/* searuch bar */}
       <div>
         <form onSubmit={changeSubmit}>
           <label> Wedding Theme </label>
-          <input
+          <Input 
+            className="InputExampleFocus"
+            icon={<Icon name='search' inverted circular link />}
             type="text"
-            placeholder=" enter wedding theme"
             name="wedding_theme"
-            onChange={changeHandler}
-          />
+            onChange={changeHandler}>
+            </Input>
         </form>
       </div>
+      <Margin> </Margin>
       {/* Website main content */}
       <article>
-        <Card.Group className='cardGroup' doubling centered itemsPerRow={4}>
+        <Card.Group className="cardGroup" doubling centered itemsPerRow={5}>
           {filterTheme.map(view => {
             return <WeddingCard key={view.id} watch={view} />;
           })}
         </Card.Group>
       </article>
-    </section>
+    </Margin>
   );
 }
 
