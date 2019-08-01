@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WeddingCard from "../WeddingCard/weddingCard";
 import axios from "axios";
-import { Item } from "semantic-ui-react";
+import { Item, Card } from "semantic-ui-react";
 
 function GuestView() {
   const [guestView, setGuestView] = useState([]);
@@ -17,7 +17,7 @@ function GuestView() {
       .then(event => {
         console.log("this is a list", event);
         setGuestView(event.data);
-      })
+      })                             
       .catch(error => {
         console.log("ERROR", error);
       });
@@ -42,6 +42,7 @@ function GuestView() {
     .includes(categories.wedding_theme.toLowerCase())
 ); 
 
+
   return (
     <section>
       {/* drop down elements */}
@@ -58,11 +59,11 @@ function GuestView() {
       </div>
       {/* Website main content */}
       <article>
-        <div>
+        <Card.Group centered itemsPerRow={3}>
           {filterTheme.map(view => {
             return <WeddingCard key={view.id} watch={view} />;
           })}
-        </div>
+        </Card.Group>
       </article>
     </section>
   );

@@ -13,7 +13,7 @@ import { Login } from "./Components/LoginForms/login";
 import { NavBar } from "./Components/Global/NavBar";
 import { Header } from "./Components/Global/Header";
 import WeddingForm from "./Components/WeddingCard/weddingForm";
-// import SingleWedding from "./Components/WeddingCard/SingleWedding";
+import SingleWedding from "./Components/WeddingCard/SingleWedding";
 
 //Utilities//
 import { GreetingContext } from "./Contexts/greetingContext";
@@ -23,7 +23,7 @@ import { PrivateRoute } from "./Utilities/PrivateRoute";
 
 function App(props) {
   const routeProps = props
-  console.log("app props", props)
+  // console.log("app props", props)
 
   const [greeting, setGreeting] = useState("Hi!")
   const [activeCard, setActiveCard] = useState(null)
@@ -43,13 +43,13 @@ function App(props) {
             <Route exact path="/" component={GuestView} />
             <Route exact path="/login" component={Login}/>
             <Route exact path="/register" component={Register}/>
-
+            <Route exact path="/singleWedding/:id" component={SingleWedding} /> 
 
             {/* Private Routes */}
             <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
             <PrivateRoute exact path="/weddingForm" component={WeddingForm} />
-            {/* <PrivateRoute exact path="/singleWedding" component={SingleWedding} /> */}
-
+            
+            
           </div>
         </RouteContext.Provider>
       </ActiveCardContext.Provider>

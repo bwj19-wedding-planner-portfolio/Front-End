@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react"; 
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js";
+import { Card } from "semantic-ui-react";
+
+
 
 // GET posts by logged in user through AxiosWithAuth//
 
@@ -24,11 +27,11 @@ useEffect(() => {
 <section> 
        {/* Webstie main content */}
     <article> 
-         <div> 
+        <Card.Group centered itemsPerRow={4}>
            { portFolioView.map(watch => {
-               return <WeddingCard key={watch.id} watch={ watch } /> 
+               return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
            })} 
-         </div>
+        </Card.Group>
     </article>
 </section>
     ); 

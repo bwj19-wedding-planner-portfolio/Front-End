@@ -1,16 +1,18 @@
 import React, { useState, useContext } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, } from "react-router-dom";
+
 import { Card, Image, Button } from "semantic-ui-react";
 import { PrivateRoute } from "../../Utilities/PrivateRoute";
-import { ActiveCardContext } from '../../Contexts/activeCardContext'
-import { RouteContext } from '../../Contexts/routeContext'
+import { ActiveCardContext } from '../../Contexts/activeCardContext';
+import { RouteContext } from '../../Contexts/routeContext';
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth";
-
 import SingleWedding from "./SingleWedding.js"
 
+import WeddingForm from "./weddingForm.js"
 
 function WeddingCard(props) {
-    console.log("wedding card props", props)
+    // console.log("wedding card props", props)
+
 
     const routeProps = useContext(RouteContext)
 
@@ -23,10 +25,10 @@ function WeddingCard(props) {
         if (localStorage.getItem('token')) {
             return(
                 <div>
-                <Button onClick={() => grabWedding(props)}>
+                <Button onClick={() => grabWedding(props.watch)}>
                     Edit
                 </Button> 
-                <Button onClick={() => deleteWedding(props)}>
+                <Button onClick={() => deleteWedding(props.watch)}>
                     Delete
                 </Button>
                 </div>
@@ -34,43 +36,43 @@ function WeddingCard(props) {
         } else {
             return ( 
                 <div>
-
-                {console.log(props)}
-                <Link to="/singleWedding">More Info</Link>
-                <Route 
-                    path="/singleWedding" 
-                    component={SingleWedding
-                    // render={props => <SingleWedding props={props.view}
-                    }
-                />
+                    <Link to={`/singleWedding/${id}`}> 
+                        More Info 
+                    </Link>
                 </div>
             )
         }
     }
 
 
-    //const [weddingToEdit, setWeddingToEdit] = useState({}) ---> add to where global state lives or the portfolio view?
+    // adds function to the edit button
     function grabWedding(wedding) { 
         setActiveCard(wedding);
         console.log(wedding);
         routeProps.routeProps.history.push("/weddingForm")
     }
+    // console.log(activeCard);
 
-    // add function to the delete button 
+
+
+    // adds function to the delete button 
     function deleteWedding(wedding) {
         console.log(wedding);
         axiosWithAuth()
             .delete(`https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/${id}`)
             .then(res => {
-                console.log(res)
+                props.setPortFolioView(props.portFolioView.filter((post) => {
+                    return post.id !== id
+                }))
             })
             .catch(err => {
                 console.log("error", err)
             })
     }
 
+
     return (
-             <Card>
+             <Card raised color="pink">
                 <Image src={photo} wrapped ui={false} atl="Wedding photo" />
                 <Card.Content>
                     <Card.Header>{couple_name}</Card.Header>
