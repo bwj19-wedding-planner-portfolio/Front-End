@@ -1,15 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
 import { PrivateRoute } from "../../Utilities/PrivateRoute";
-import { ActiveCardContext } from '../../Contexts/activeCardContext'
-import { RouteContext } from '../../Contexts/routeContext'
+import { ActiveCardContext } from '../../Contexts/activeCardContext';
+import { RouteContext } from '../../Contexts/routeContext';
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth";
-
 import SingleWedding from "./SingleWedding.js"
 
+import WeddingForm from "./weddingForm.js"
 
 function WeddingCard(props) {
+
     console.log("wedding card props", props)
 
     const routeProps = useContext(RouteContext)
@@ -35,14 +36,14 @@ function WeddingCard(props) {
             return ( 
                 <div>
 
-                {console.log(props)}
-                <Link to="/singleWedding">More Info</Link>
-                <Route 
+                {/* {console.log(props)} */}
+                <Link to={`/singleWedding/${id}`}>More Info</Link>
+                {/* <Route 
                     path="/singleWedding" 
-                    component={SingleWedding
-                    // render={props => <SingleWedding props={props.view}
-                    }
+                    // component={SingleWedding}
+                    render={props => <SingleWedding {...props} watch={props.watch}/>}
                 />
+                <Route path="/singleWedding" component={WeddingForm}/> */}
                 </div>
             )
         }
