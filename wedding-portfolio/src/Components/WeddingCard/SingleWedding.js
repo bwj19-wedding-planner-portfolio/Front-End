@@ -5,17 +5,23 @@ import axios from "axios";
 function SingleWedding(props) {
   const [moreInfo, setMoreInfo] = useState({})
 
+  console.log("single wedding props", props.match.params.id)
+
     useEffect(() => {
+       const id = props.match.params.id
         axios
           .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
           .then(response => {
             console.log("singlewedding get", response.data);
-            setMoreInfo(response.data);
+            setMoreInfo(response.data.find(wedding => wedding.id == id))
           })
           .catch(error => {
             console.log("Error", error);
           });
-      }, []);
+      }, [props.match.params.id]);
+
+    console.log("moreInfo", moreInfo)
+
 
   const {
     photo,
@@ -24,9 +30,8 @@ function SingleWedding(props) {
     user_location,
     wedding_theme,
     vendors
-  } = props;
+  } = moreInfo;
 
-  console.log("single wedding props", props)
 
   return (
     <div>

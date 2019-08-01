@@ -48,7 +48,7 @@ function App(props) {
             {/* Private Routes */}
             <PrivateRoute exact path="/portfolioView" component={PortfolioView}/>
             <PrivateRoute exact path="/weddingForm" component={WeddingForm} />
-            {/* <Route exact path="/singleWedding/:id" render={props => <SingleWedding {...props} watch={props.history}/>} /> */}
+            
             
           </div>
         </RouteContext.Provider>
