@@ -41,7 +41,7 @@ if(!portFolioView || portFolioView.length === 0) {
        {/* Webstie main content */}
        <Margin> </Margin>
     <article> 
-        <Card.Group className='cardGroup' doubling centered itemsPerRow={5}>
+        <Card.Group className='cardGroup' doubling centered itemsPerRow={3}>
            { portFolioView.map(watch => {
                return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
            })} 
