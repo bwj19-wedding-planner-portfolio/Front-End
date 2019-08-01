@@ -5,6 +5,8 @@ import { GreetingContext } from "../../Contexts/greetingContext";
 
 export const Register = props => {
   // const { setGreeting } = useContext(GreetingContext);
+  const [ isLoading, setIsLoading ] = useState(false)
+  const [ isError, setIsError ] = useState(false)
 
   const [userID, setUserID] = useState({
     firstName: "",
@@ -32,6 +34,7 @@ export const Register = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setIsLoading(true)
     axios
       .post(
         "https://bw19-wedding-planner-portfolio.herokuapp.com/api/auth/register",
@@ -43,21 +46,52 @@ export const Register = props => {
         // setLoggedIn(true);
         // console.log("loggedIn State", loggedIn);
         console.log("RESPONSE", res);
+        setIsLoading(false)
         localStorage.setItem("token", res.data.token);
         // setGreeting(res.data.username);
         props.history.push("/portfolioView");
       })
       .catch(err => {
+        setIsError(true)
         // setIsLoading(false);
         // setError(err);
         console.log("Server Error", err);
       });
+      setIsError(false)
+      setIsLoading(false)
   };
 
   console.log("This is the userId", userID);
 
+  function loading() {
+    if (isLoading) {
+      return (
+        <div>
+          <h1>
+            Creating Account
+          </h1>
+        </div>
+      )
+    }
+  }
+
+  function error() {
+    if (isError) {
+      return (
+        <div>
+          <h1>
+            An error has occured, please try again!
+          </h1>
+        </div>
+      )
+    }
+  }
+
+
   return (
     <div className="Login">
+      {loading()}
+      {error()}
       <form onSubmit={handleSubmit}>
         <label>First Name</label>
         <input name="firstName" type="text" onChange={handleChange} />
