@@ -1,0 +1,33 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: linear-gradient(#ededed, transparent 80%),
+    linear-gradient(to top, #fff, transparent), url(../Assets/registerImg.jpg);
+  background-size: cover;
+  padding: 2rem;
+}
+
+.formStyle {
+  max-width: 450px;
+  margin: 50px auto;
+  height: auto;
+}
+
+button {
+  background-color: #a0d5fd;
+  border: none;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15rem;
+
+  &:hover,
+  &:active {
+    background-color: darken(#a0d5fd, 60%);
+    color: #fff;
+  }
+}
