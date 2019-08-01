@@ -59,7 +59,7 @@ function GuestView() {
       </div>
       {/* Website main content */}
       <article>
-        <Card.Group centered itemsPerRow={3}>
+        <Card.Group className='cardGroup' doubling centered itemsPerRow={4}>
           {filterTheme.map(view => {
             return <WeddingCard key={view.id} watch={view} />;
           })}

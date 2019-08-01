@@ -18,7 +18,7 @@ function WeddingCard(props) {
 
     const { activeCard, setActiveCard} = useContext(ActiveCardContext)
 
-    const {id, photo, couple_name, firstName, user_location, wedding_theme} = props.watch
+    const {id, photo, couple_name, planner, location, wedding_theme} = props.watch
     
 
     function isLoggedIn() {
@@ -70,24 +70,27 @@ function WeddingCard(props) {
             })
     }
 
+    const plannerColor = "#DCB5F9"
+    const guestColor = "97D1FD"
+    
 
     return (
-             <Card raised color="pink">
+             <Card raised >
                 <Image src={photo} wrapped ui={false} atl="Wedding photo" />
                 <Card.Content>
-                    <Card.Header>{couple_name}</Card.Header>
+                    <Card.Header className="coupleName">{couple_name}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>Planner: {firstName}</span>
+                        <span className='details'>Theme: {wedding_theme}</span>
                     </Card.Meta>
                     <Card.Meta>
-                        <span className='date'>Location: {user_location}</span>
+                        <span className='details'>Planner: {planner}</span>
                     </Card.Meta>
                     <Card.Meta>
-                        <span className='date'>Theme: {wedding_theme}</span>
+                        <span className='details'>Location: {location}</span>
                     </Card.Meta>
                  
                 </Card.Content>
-                <Card.Content extra>
+                <Card.Content extra style={{backgroundColor: "#DCB5F9"}}>
                     {isLoggedIn()}
                 </Card.Content>
             </Card>            
