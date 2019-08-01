@@ -49,5 +49,6 @@ if(!portFolioView || portFolioView.length === 0) {
 </section>
     ); 
 }
+}
 
 export default PortfolioView; 
