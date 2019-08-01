@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Loader, Form } from "semantic-ui-react";
+import "../LoginForms/login.scss";
 
-export const Login = (props) => {
-
-  const [ isLoading, setIsLoading ] = useState(false)
-  const [ isError, setIsError ] = useState(false)
+export const Login = props => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
@@ -16,89 +17,81 @@ export const Login = (props) => {
 
   const sendCreds = e => {
     e.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
     axios
       .post(
         "https://bw19-wedding-planner-portfolio.herokuapp.com/api/auth/login",
         credentials
       )
       .then(res => {
-        // setIsLoading(true);
-        // console.log("function", setLoggedIn);
-        // setLoggedIn(true);
-        // console.log("loggedIn State", loggedIn);
-        console.log("response", res)
-        setIsLoading(false)
-        localStorage.setItem('token', res.data.token);
-        // setGreeting(res.data.message);
+        console.log("response", res);
+        setIsLoading(false);
+        localStorage.setItem("token", res.data.token);
         props.history.push("/portfolioView");
       })
       .catch(err => {
-        setIsError(true)
+        setIsError(true);
         setIsLoading(false);
       });
-      setIsError(false)
+    setIsError(false);
   };
 
   function loading() {
-    console.log("inside loading state render function")
-    console.log("isLoading", isLoading)
+    console.log("inside loading state render function");
+    console.log("isLoading", isLoading);
     if (isLoading) {
-        return (
-            <div className="formHeader">
-                <h2>
-                    Logging In
-                </h2>
-            </div>
-        )
-    }
-}
-function error() {
-  console.log("inside error state render function")
-  console.log("iserror", isError)
-  if (isError) {
       return (
-          <div className="formHeader">
-              <h2>
-                  Sign up to be able to Log in
-              </h2>
-          </div>
-      )
+        <div className="alertMessage">
+          <Loader active inline="centered" className="loader" />
+          <p className="loader">Now Loading</p>
+        </div>
+      );
+    }
   }
-}
+  function error() {
+    console.log("inside error state render function");
+    console.log("iserror", isError);
+    if (isError) {
+      return (
+        <div className="messageContainer">
+          <h3>You must register before you can do that!</h3>
+
+          <p>Sign up to be part of awesome list of wedding planners!</p>
+        </div>
+      );
+    }
+  }
 
   return (
-    <div className="Login">
+    <div className="login">
+      <Form onSubmit={sendCreds} className="formStyle">
+        <h2 className="formHeader">
+          Are you a wedding planner? Come and join us and be part of awesome
+          community!
+        </h2>
+        <Form.Field>
+          <label>Username</label>
+          <input
+            className="inputStyle"
+            name="username"
+            type="text"
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
+          <input
+            className="inputStyle"
+            name="password"
+            type="password"
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <button type="submit">Submit</button>
+      </Form>
+
       {loading()}
       {error()}
-      <form onSubmit={sendCreds}>
-        <label>Username</label>
-        <input name="username" type="text" onChange={handleChange} />
-
-        <label>Password</label>
-        <input name="password" type="password" onChange={handleChange} />
-        <button type="submit" />
-      </form>
     </div>
   );
 };
-
-//  user: {
-//   userId: “”,
-//    firstName: "",
-//    lastName: "",
-//    username: "",
-//    password: "",
-//    weddings: [
-//      {
-//        weddingId: "",
-//        plannerId: “”,
-//        date: “”,
-//        image: "",
-//        description: "",
-//        vendors: "",
-//        theme: "",
-//        location: ""
-//      }
-//    ]
-//  }

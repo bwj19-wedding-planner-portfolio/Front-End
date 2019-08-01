@@ -1,14 +1,20 @@
 import React from "react";
+import logo from "../Assets/logo.svg";
+import "../Global/Header.scss";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header style={{backgroundColor:"blue"}}>
-      <h1>
-        THIS IS OUR APP HEADER.
-      </h1>
-      <h2>
-        It's huge.
-      </h2>
+    <header>
+      <div className="logo">
+        <Link to="/">
+          <img src={logo} alt="Logo" className="logo-img" />
+        </Link>
+        <div className="logo-text">
+          <h1 className="logo-name">PlanFull</h1>
+          <p className="tagline">Planning Made Easy</p>
+        </div>
+      </div>
     </header>
-  )
-}
+  );
+};

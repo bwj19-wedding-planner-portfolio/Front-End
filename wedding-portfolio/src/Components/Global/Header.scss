@@ -1,0 +1,29 @@
+header {
+  padding: 2rem;
+  background: lighten(#a0d5fd, 10);
+  border: none;
+}
+
+.logo {
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+
+  &-img {
+    width: auto;
+    height: 3rem;
+    margin-right: 1rem;
+  }
+
+  &-text {
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      margin-top: -1rem;
+      font-size: 0.5rem;
+      letter-spacing: 0.08rem;
+      text-transform: uppercase;
+    }
+  }
+}
