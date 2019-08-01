@@ -1,8 +1,21 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import { Card, Image } from "semantic-ui-react";
+import axios from "axios";
 
 function SingleWedding(props) {
-  // const [singleWedding, setSingleWedding] = useState()
+  const [moreInfo, setMoreInfo] = useState({})
+
+    useEffect(() => {
+        axios
+          .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
+          .then(response => {
+            console.log("singlewedding get", response.data);
+            setMoreInfo(response);
+          })
+          .catch(error => {
+            console.log("Error", error);
+          });
+      }, []);
 
   const {
     photo,

@@ -2,28 +2,14 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
 import { PrivateRoute } from "../../Utilities/PrivateRoute";
-import { ActiveCardContext } from '../../Contexts/activeCardContext'
-import { RouteContext } from '../../Contexts/routeContext'
+import { ActiveCardContext } from '../../Contexts/activeCardContext';
+import { RouteContext } from '../../Contexts/routeContext';
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth";
-import axios from "axios";
 import SingleWedding from "./SingleWedding.js"
 
 import WeddingForm from "./weddingForm.js"
 
 function WeddingCard(props) {
-    const [moreInfo, setMoreInfo] = useState({})
-
-    useEffect(() => {
-        axios
-          .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
-          .then(response => {
-            console.log("singlewedding get", response);
-            setMoreInfo(response);
-          })
-          .catch(error => {
-            console.log("Error", error);
-          });
-      }, []);
 
     console.log("wedding card props", props)
 
