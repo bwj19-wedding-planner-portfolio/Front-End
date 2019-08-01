@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import WeddingCard from "../WeddingCard/weddingCard.js"; 
 import { axiosWithAuth } from "../../Utilities/axiosWithAuth.js";
 
-
-
-
 // GET posts by logged in user through AxiosWithAuth//
 
 function PortfolioView() {
