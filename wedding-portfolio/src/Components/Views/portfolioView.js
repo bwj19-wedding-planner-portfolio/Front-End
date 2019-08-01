@@ -22,19 +22,33 @@ useEffect(() => {
         console.log("ERROR", error)  
             })
     }, [])
-
+if(!portFolioView || portFolioView.length === 0) {
+    return (
+        <section> 
+               {/* Webstie main content */}
+            <article> 
+                 <div> 
+                    Add your first post to get started
+                 </div>
+            </article>
+        </section>
+    )
+} else {
+    console.log("portFolioView", portFolioView)
     return(
-<section> 
-       {/* Webstie main content */}
-    <article> 
-         <div> 
-           { portFolioView.map(watch => {
-               return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
-           })} 
-         </div>
-    </article>
-</section>
-    ); 
+        <section> 
+               {/* Webstie main content */}
+            <article> 
+                 <div> 
+                   { portFolioView.map(watch => {
+                       return <WeddingCard key={watch.id} watch={ watch } setPortFolioView={setPortFolioView} portFolioView={portFolioView} /> 
+                   })} 
+                 </div>
+            </article>
+        </section>
+            ); 
+}
+
 }
 
 export default PortfolioView; 

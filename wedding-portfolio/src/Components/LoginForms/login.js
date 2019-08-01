@@ -3,7 +3,7 @@ import axios from "axios";
 import { GreetingContext } from "../../Contexts/greetingContext"
 
 export const Login = (props) => {
-  const { setGreeting } = useContext(GreetingContext);
+  // const { setGreeting } = useContext(GreetingContext);
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
@@ -27,7 +27,7 @@ export const Login = (props) => {
         // console.log("loggedIn State", loggedIn);
         console.log("response", res)
         localStorage.setItem('token', res.data.token);
-        setGreeting(res.data.username);
+        // setGreeting(res.data.message);
         props.history.push("/portfolioView");
       })
       .catch(err => {
