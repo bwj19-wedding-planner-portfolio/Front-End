@@ -21,7 +21,7 @@ function SingleWedding(props) {
           .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
           .then(response => {
             console.log("singlewedding get", response.data);
-            setMoreInfo(response.data.find(wedding => wedding.id === id))
+            setMoreInfo(response.data.find(wedding => wedding.id == id))
           })
           .catch(error => {
             console.log("Error", error);
