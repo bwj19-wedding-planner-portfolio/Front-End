@@ -11,7 +11,7 @@ export const Header = () => {
           <img src={logo} alt="Logo" className="logo-img" />
         </Link>
         <div className="logo-text">
-          <h1 className="logo-name">PlanFull</h1>
+          <h1 className="logo-name">PlanFul</h1>
           <p className="tagline">Planning Made Easy</p>
         </div>
       </div>

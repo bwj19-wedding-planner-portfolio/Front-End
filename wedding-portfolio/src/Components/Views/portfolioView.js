@@ -15,7 +15,6 @@ useEffect(() => {
     axiosWithAuth()
     .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts")
     .then(look => {
-         console.log("this is a list", look)
         setPortFolioView(look.data.posts)
         })
         .catch(error => {
@@ -34,7 +33,6 @@ if(!portFolioView || portFolioView.length === 0) {
         </section>
     )
 } else {
-    console.log("portFolioView", portFolioView)
     return(
         <Margin> 
 <section> 
