@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -6,13 +6,13 @@ import GuestView from "../Views/guestView.js";
 
 function SingleWedding(props) {
 
-  const [moreInfo, setMoreInfo] = useState({photo: "",
-                                            couple_name: "",
-                                            planner: "",
-                                            location: "",
-                                            wedding_theme: "",
-                                            vendors: "",
-                                            wedding_date: ""});
+  const [ moreInfo, setMoreInfo ] = useState({ photo: "",
+                                             couple_name: "",
+                                             planner: "",
+                                             location: "",
+                                             wedding_theme: "",
+                                             vendors: "",
+                                             wedding_date: "" });
 
 
   useEffect(() => {
