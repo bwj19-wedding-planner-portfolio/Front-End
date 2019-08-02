@@ -33,3 +33,16 @@ h2 {
 .formHeader {
   margin: 25px auto;
 }
+
+.ui.menu .active.item {
+  background: #D2EBFE;
+  color: rgba(0,0,0,.95);
+  font-weight: 400;
+  box-shadow: none;
+}
+.ui.menu .active.item:hover {
+  background: #D2EBFE;
+  color: rgba(0,0,0,.95);
+  font-weight: 400;
+  box-shadow: none;
+}
