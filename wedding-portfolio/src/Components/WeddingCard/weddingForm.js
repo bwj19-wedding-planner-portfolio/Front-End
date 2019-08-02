@@ -108,7 +108,7 @@ function WeddingForm() {
             return (
 
                 <div className="formHeader">
-                    <h3 style={{color: "pink"}}>
+                    <h3 style={{color: "#FA80AF"}}>
                         ...One Moment While We Prepare Your Post
                     </h3>
                 </div>

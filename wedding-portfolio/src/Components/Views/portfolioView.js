@@ -28,7 +28,9 @@ if(!portFolioView || portFolioView.length === 0) {
                {/* Webstie main content */}
             <article> 
                  <div> 
-                    Add your first post to get started
+                    <h3 style={{color: "#FA80AF"}}>
+                        Add Your First Post To Get Started!
+                    </h3>
                  </div>
             </article>
         </section>
