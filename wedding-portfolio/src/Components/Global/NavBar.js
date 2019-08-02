@@ -21,23 +21,22 @@ export const NavBar = props => {
             header as={NavLink} 
             exact to="/portfolioView" 
             activeClassName="active"
-            style={{backgroundColor: "#97D1FD"}}
-          >
-          </Menu.Item>
-
-          <Menu.Item 
-            name="Add Wedding"
-            header as={NavLink} 
-            exact to="/weddingForm" 
-            activeClassName="active"
           >
           </Menu.Item>
 
           <Menu.Menu position="right">
+            <Menu.Item 
+              name="Add Wedding"
+              header as={NavLink} 
+              exact to="/weddingForm" 
+              activeClassName="active"
+            >
+            </Menu.Item>
+
             <Menu.Item
               name="Logout"
               onClick={logout}
-              />
+            />
           </Menu.Menu>
         </>
       )
@@ -45,33 +44,33 @@ export const NavBar = props => {
       return (
         <>
           <Menu.Item 
+            name="Weddings"
             header as={NavLink} 
             exact to="/" 
             activeClassName="active"
           >
-            GuestView
           </Menu.Item>
-          <Menu.Item 
-            header as={NavLink} 
-            exact to="/login" 
-            activeClassName="active"
-            
-          >
-            Login
-          </Menu.Item>
-          <Menu.Item 
-            header as={NavLink} 
-            exact to="/register" 
-            activeClassName="active"
+          <Menu.Menu position="right">
+            <Menu.Item 
+              name="Login"
+              header as={NavLink} 
+              exact to="/login" 
+              activeClassName="active"
+              
             >
-            Sign Up
-          </Menu.Item>
+            </Menu.Item>
+            <Menu.Item 
+              name="Sign Up"
+              header as={NavLink} 
+              exact to="/register" 
+              activeClassName="active"
+              >
+            </Menu.Item>
+          </Menu.Menu>
         </>
       )
     }
   }
-
-  // const {color} = "#DCB5F9"
 
   return (
     <div>
