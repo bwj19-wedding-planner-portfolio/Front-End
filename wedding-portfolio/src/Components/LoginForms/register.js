@@ -70,10 +70,7 @@ export const Register = props => {
       {error()}
       <h2>Join PlanFul</h2>
       <p>
-        A platform for wedding planners and their clients
-      </p>
-      <p>
-        Professionally display your work
+        A platform for you to professionally display your work
       </p>
       <Form onSubmit={handleSubmit} className="formStyle">
         <Form.Group>
