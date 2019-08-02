@@ -17,7 +17,7 @@ export const NavBar = props => {
       return (
         <>
           <Menu.Item 
-            name="Portfolio"
+            name="My Portfolio"
             header as={NavLink} 
             exact to="/portfolioView" 
             activeClassName="active"

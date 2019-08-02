@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Loader, Form } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import "../LoginForms/register.scss";
 
 export const Register = props => {
@@ -68,10 +68,12 @@ export const Register = props => {
     <div className="register">
       {loading()}
       {error()}
-      <h2>Join PlanFull</h2>
+      <h2>Join PlanFul</h2>
       <p>
-        A wedding planner platform and community of co-creators shaking up the
-        industry—together.
+        A platform for wedding planners and their clients
+      </p>
+      <p>
+        Professionally display your work
       </p>
       <Form onSubmit={handleSubmit} className="formStyle">
         <Form.Group>

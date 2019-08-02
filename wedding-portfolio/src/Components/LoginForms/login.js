@@ -56,7 +56,7 @@ export const Login = props => {
         <div className="messageContainer">
           <h3>You must register before you can do that!</h3>
 
-          <p>Sign up to be part of awesome list of wedding planners!</p>
+          <p>Sign up to be part of our awesome list of wedding planners!</p>
         </div>
       );
     }
@@ -64,11 +64,16 @@ export const Login = props => {
 
   return (
     <div className="login">
+      <h2 className="formHeader">
+        Welcome Back
+      </h2>
+      <p>
+        Login to see your portfolio
+      </p>
+      <p>
+        Don't have an account? Click sign up to join our amazing community
+      </p>
       <Form onSubmit={sendCreds} className="formStyle">
-        <h2 className="formHeader">
-          Are you a wedding planner? Come and join us and be part of awesome
-          community!
-        </h2>
         <Form.Field>
           <label>Username</label>
           <input
