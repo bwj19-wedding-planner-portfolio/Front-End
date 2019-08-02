@@ -5,45 +5,35 @@ import axios from "axios";
 import GuestView from "../Views/guestView.js";
 
 function SingleWedding(props) {
+
   const [moreInfo, setMoreInfo] = useState({photo: "",
-    couple_name: "",
-    planner: "",
-    location: "",
-    wedding_theme: "",
-    vendors: "",
-    wedding_date: ""})
-
-  console.log("single wedding props", props.match.params.id)
-
-    useEffect(() => {
-       const id = props.match.params.id
-        axios
-          .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
-          .then(response => {
-            console.log("singlewedding get", response.data);
-            setMoreInfo(response.data.find(wedding => wedding.id == id))
-          })
-          .catch(error => {
-            console.log("Error", error);
-          });
-      }, [props.match.params.id]);
-
-    console.log("moreInfo", moreInfo)
+                                            couple_name: "",
+                                            planner: "",
+                                            location: "",
+                                            wedding_theme: "",
+                                            vendors: "",
+                                            wedding_date: ""});
 
 
-  const {
-    photo,
-    couple_name,
-    planner,
-    location,
-    wedding_theme,
-    vendors,
-    wedding_date,
-  } = moreInfo;
+  useEffect(() => {
+
+      const id = props.match.params.id
+
+      axios
+        .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
+        .then( response => { setMoreInfo(response.data.find( wedding => wedding.id == id )) } )
+        .catch(error => {console.log("SingleWedding axios error", error)})
+
+  }, [props.match.params.id]);
+
+
+  const { photo, couple_name, planner, location, wedding_theme, vendors, wedding_date } = moreInfo;
 
 
   return (
-    <div className='singleView'>
+
+    <div className="singleView">
+
       <Card raised centered fluid>
         {/* there could be a image gallery here */}
         <Image src={photo} wrapped ui={false} atl="Wedding photo" />
@@ -61,7 +51,9 @@ function SingleWedding(props) {
           <Link to="/" component={GuestView}> Back </Link>
         </Card.Content>
       </Card>
+
     </div>
+
   );
 }
 
