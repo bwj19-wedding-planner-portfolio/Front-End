@@ -22,7 +22,7 @@ function WeddingCard(props) {
         if (localStorage.getItem("token")) {
             return(
 
-                <Card.Content extra style={{ backgroundColor: "#A0D5FD" }}>
+                <Card.Content extra style={{ backgroundColor: "#DCB5F9" }}>
                     <div>
                         <Button onClick={ () => grabWedding(props.watch) }>
                             Edit
@@ -37,7 +37,7 @@ function WeddingCard(props) {
         } else {
             return ( 
                 
-                <Card.Content extra style={{ backgroundColor: "#97D1FD" }}>
+                <Card.Content extra style={{ backgroundColor: "#A0D5FD" }}>
                     <div>
                         <Link to={ `/singleWedding/${id}` }> 
                             More Info 
