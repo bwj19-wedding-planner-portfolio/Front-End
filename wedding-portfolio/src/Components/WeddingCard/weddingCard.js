@@ -22,7 +22,7 @@ function WeddingCard(props) {
         if (localStorage.getItem("token")) {
             return(
 
-                <Card.Content extra style={{ backgroundColor: "#DCB5F9" }}>
+                <Card.Content extra style={{ backgroundColor: "#A0D5FD" }}>
                     <div>
                         <Button onClick={ () => grabWedding(props.watch) }>
                             Edit
