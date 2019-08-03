@@ -6,6 +6,8 @@ This React App allows a Wedding Planner to showcase their work to their perspect
 
 # Getting Started
 
+Deployed App - https://compassionate-easley-dae0a9.netlify.com/ 
+
 To use the App as a client end user follow the link and use the search feature to filter through the listed weddings by theme. To see more details about a wedding, click the more info link directly under the specific post you wish to see.
 
 To use the App as a wedding planner end user follow the link, click "Sign Up" on the navigation menu, and fill out the form to create a portfolio. This will redirect you to the portfolio view. You will find it empty until a post is created.  
@@ -118,6 +120,7 @@ Backend Engineer: Chris Carter(https://github.com/ChrisJCarter91)
 
 Full Repo:
 https://github.com/bwj19-wedding-planner-portfolio
+
 
 #Project status
 This project was completed for a Lambda School build week July 2019. There may be updates to the application periodically
